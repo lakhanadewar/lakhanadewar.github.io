@@ -1,0 +1,44 @@
+//Two main colors
+$primary-color: #fff;
+$secondary-color: #161616;
+
+
+//Functions
+@function set-b-color($color)  {
+    @if (lightness($color) < 20) {
+        @return lighten($color, 20%);
+    } @else {
+        @return darken($color, 20%);
+    }
+}
+$secondary-b-color: set-b-color($secondary-color);
+
+@function set-text-color($color)  {
+    @if (lightness($color) < 40) {
+        @return #fff;
+    } @else {
+        @return #000;
+    }
+}
+$primary-text-color: set-text-color($secondary-color);
+
+@function set-btn-text-color($color)  {
+    @if (lightness($color) < 60) {
+        @return #fff;
+    } @else {
+        @return #000;
+    }
+}
+$btn-text-color: set-btn-text-color($primary-color);
+
+@function set-text-b-color($color)  {
+    @if (lightness($color) < 40) {
+        @return #bbbbbb;
+    } @else {
+        @return #3f3f3f;
+    }
+}
+$secondary-text-color: set-text-b-color($secondary-color);
+
+
+

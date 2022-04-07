@@ -1,0 +1,144 @@
+//Header 4 Styles
+.uikit-header-4 {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    color: #fff;
+    background: #000;
+    @include background(url(../images/image1.jpg));
+    box-sizing: border-box;
+
+    & * {
+        box-sizing: border-box;
+    }
+
+    h1,h3,h4 {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .brand {
+        color: #fff;
+        text-decoration: none;
+        position: absolute;
+        @include topLeft;
+        margin: 0.6em 0 0 2em;
+        font-size: 1.1em;
+    }
+
+    .header-text {
+        margin-left: 4em;
+        text-align: left;
+        position: absolute;
+        left: 0;
+        top: 30%;
+
+        h1 {
+            margin-bottom: 0;
+            font-size: 3em;
+        }
+
+        p {
+            @include paragraph;
+            margin-bottom: 2em;
+        }
+
+        .main-btn {
+            padding: 0.7em 1.3em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: #fff solid 3px;
+            transition: 0.3s;
+            text-decoration: none;
+            color: #fff;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
+    }
+
+    .header-info {
+        position: absolute;
+        @include bottomLeft;
+        width: 65%;
+        background: $secondary-color;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .info-item {
+          padding: 1em 2em;
+          color: $secondary-text-color;   
+
+          h4 {
+              color: $primary-text-color;
+          }
+        }
+    }
+}
+
+//Media queries
+@media screen and (max-width: 1000px) {
+    .uikit-header-4 {
+        background: url(../images/image2.jpg);
+    }
+    
+    .header-info {
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width: 700px), (max-height: 450px) {
+    .uikit-header-4 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        min-height: initial;
+        height: auto;
+        @include background(url(../images/image2.jpg));
+        .header-text {
+            position: static;
+            text-align: center;
+            margin: 0;
+
+            p {
+                @include marginAuto;
+            }
+        }
+
+        .brand {
+            position: static;
+            margin: 0;
+        }
+
+        .header-info {
+            flex-direction: column;
+            @include flexCenter;
+            position: static;
+            width: 100%;
+            margin: 0;
+            margin-top: 5em;
+
+            .info-item {
+                padding: 1em;
+            }
+        }
+    }
+}
+@media screen and (max-height: 550px) {
+    .uikit-header-4 .header-text {
+        top: 15%;
+    }
+}
+//Media queries
+@media screen and (max-width: 1000px) {
+    .uikit-header-4 {
+        font-size: 13px;
+       .header-text {
+           padding: 1em 1.5em;
+       }
+    }
+}

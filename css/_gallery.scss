@@ -1,0 +1,123 @@
+//Gallery styles start here
+.uikit-masonry-image-vid-gallery {
+  position: relative;
+  padding: 3em 0;
+  background: $secondary-b-color;
+  font-size: 16px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, $secondary-color 0%, rgba(255, 255, 255, 0));
+    width: 100%;
+    height: 60%;
+    z-index: 0;
+  }
+
+  & * {
+    box-sizing: border-box;
+  }
+
+  .images-container {
+    margin-top: 6em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-evenly;
+    justify-items: center;
+    @include marginAuto;
+    max-width: 1073px;
+    position: relative;
+
+    .item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      @include boxShadow;
+      width: 20em;
+      height: 15em;
+      cursor: pointer;
+      margin: 1em;
+
+      img {
+        position: absolute;
+        left: -55%;
+        transition: 0.3s;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .play-icon {
+        position: absolute;
+        @include center;
+        color: #fff;
+        border: #fff solid 5px;
+        border-radius: 100%;
+        background: transparent;
+        padding: 1.1em;
+        z-index: 2;
+        transition: 0.3s;
+        @include boxShadow;
+        pointer-events: none;
+      }
+    }
+  }
+  @import "lightbox";
+}
+
+//classes for javascript
+.disappear-w {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.disappear-o {
+  opacity: 0 !important;
+}
+
+.disappear-d {
+  display: none;
+}
+
+//-------------------------
+@media screen and (max-width: 1099px) {
+  .uikit-masonry-image-vid-gallery .images-container {
+    grid-template-columns: 1fr 1fr;
+    max-width: 740px;
+  }
+}
+
+@media screen and (max-width: 729px) {
+  .uikit-masonry-image-vid-gallery .images-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .uikit-masonry-image-vid-gallery .images-container .item {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .uikit-masonry-image-vid-gallery {
+    .close-btn {
+      top: 0.7em;
+      right: 0.5em;
+      width: 30px;
+    }
+    .line {
+      width: 30px;
+      height: 3px;
+    }
+    .line:nth-child(1) {
+      transform: rotate(45deg) translate(4px);
+    }
+    .line:nth-child(2) {
+      transform: rotate(-45deg) translate(3px);
+    }
+  }
+}

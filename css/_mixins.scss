@@ -1,0 +1,145 @@
+@mixin overlay($color) {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $color;
+  z-index: 0;
+}
+
+@mixin bgDefault {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin background($background) {
+  background: $background;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin backgroundFixed($background) {
+  background: $background;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@mixin paragraph {
+  max-width: 35em;
+  font-size: 0.9em;
+  letter-spacing: 2px;
+  line-height: 26px;
+  font-weight: 400;
+}
+//ABSOLUTE POSITIONING
+@mixin center {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin middleRight {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@mixin middleLeft {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin middleBottom {
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+@mixin middleTop {
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+/*===========================*/
+@mixin topRight {
+  right: 0;
+  top: 0;
+}
+@mixin topLeft {
+  left: 0;
+  top: 0;
+}
+
+@mixin bottomRight {
+  right: 0;
+  bottom: 0;
+}
+
+@mixin bottomLeft {
+  left: 0;
+  bottom: 0;
+}
+//FLEX POSITIONING
+@mixin flexCenter {
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexMiddleLeft {
+  justify-content: start;
+  align-items: center;
+}
+
+@mixin flexMiddleRight {
+  justify-content: end;
+  align-items: center;
+}
+
+@mixin flexMiddleTop {
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@mixin flexMiddleBottom {
+  justify-content: center;
+  align-items: flex-end;
+}
+
+//AUTO MARGIN
+@mixin marginAuto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin mpStrip {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin shine {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  z-index: 2;
+  display: block;
+  content: '';
+  width: 50%;
+  height: 100%;
+  background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+  -webkit-transform: skewX(-25deg);
+  transform: skewX(-25deg);
+  pointer-events: none;
+}
+
+@mixin boxShadow {
+  -webkit-box-shadow: 5px 3px 38px -8px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 3px 38px -8px rgba(0,0,0,0.75);
+  box-shadow: 5px 3px 38px -8px rgba(0,0,0,0.75);
+}

@@ -1,0 +1,52 @@
+/*Heading styles start here*/
+.uikit-heading-1 {
+  background: $secondary-color;
+  padding: 4em 1em;
+  text-align: center;
+
+  h1 {
+    font-size: 2.4em;
+    margin: 0;
+    letter-spacing: 1px;
+    color: $primary-text-color;
+  }
+
+  .hr {
+    margin: 0.4em auto;
+
+    .hr-line,
+    .hr-circle {
+      background: $primary-color;
+      display: inline-block;
+    }
+
+    .hr-line {
+      width: 2em;
+      height: 0.2em;
+    }
+
+    .hr-circle {
+      width: 0.5em;
+      height: 0.5em;
+      margin: 0 0.6em;
+      transform: rotate(45deg) translateY(0.2em);
+    }
+  }
+
+  p {
+    max-width: 50em;
+    font-size: 0.9em;
+    letter-spacing: 2px;
+    line-height: 26px;
+    font-weight: 400;
+    margin-left: auto;
+    margin-right: auto;
+    color: $secondary-text-color;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .uikit-heading-1 {
+    font-size: 14px;
+  }
+}

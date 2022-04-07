@@ -1,0 +1,128 @@
+.vid-img-container {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.vid-modal-overlay {
+  display: flex;
+  @include flexMiddleTop;
+  position: fixed;
+  padding: 1em 1em 1em 2em;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  overflow-y: scroll;
+  opacity: 0;
+  display: none;
+  transition: 0.4s;
+  z-index: 99;
+
+  &::-webkit-scrollbar {
+      position: absolute;
+      right: 0.5em;
+      z-index: 0;
+  }
+
+  .vid-modal {
+      width: 80%;
+      display: flex;
+      @include flexCenter;
+      flex-direction: column;
+      transform: translateY(-10em);
+      transition: 0.4s;
+      max-width: 80em;
+
+      .vid-modal-text {
+          background: #fff;
+          color: #000;
+          padding: 1em;
+          font-size: 1em;
+          width: 100%;
+          position: relative;
+
+          svg {
+              position: absolute;
+              right: 8px;
+              top: 8px;
+              cursor: pointer;
+          }
+      }
+      img, video {
+        width: 100%;
+        height: 100%;
+      }
+  }
+}
+
+//Arrows
+.arrow-container {
+  box-sizing: border-box;
+  width: 4em;
+  height: 6em;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 99;
+}
+
+.arrow-container-right {
+  right: -0.3em;
+  padding: 1.8em 2.6em 1.8em 0em;
+}
+
+.arrow-container-left {
+  left: 0;
+  padding: 1.7em 2em 1.2em 1.5em;
+}
+
+.arrow-left {
+  transform: rotate(45deg);
+  border-left: solid 3px #fff;
+  border-bottom: solid 3px #fff;
+}
+
+.arrow-right {
+  transform: rotate(-45deg);
+  border-right: solid 3px #fff;
+  border-bottom: solid 3px #fff;
+}
+
+.arrow-left, .arrow-right {
+  width: 2.1em;
+  height: 2.1em;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.arrow-left:hover {
+  border-left: solid 3px $primary-color;
+  border-bottom: solid 3px $primary-color;
+}
+
+.arrow-right:hover {
+  border-right: solid 3px $primary-color;
+  border-bottom: solid 3px $primary-color;
+}
+
+.vid-modal-anim {
+  animation: vidFade 1.5s;
+}
+
+@media screen and (max-width: 500px) {
+  .vid-modal-overlay {
+      font-size: 12px;
+      .vid-modal {
+          width: 95%;
+      }
+  }  
+}
+
+@keyframes vidFade {
+  0%{opacity: 0;}
+  50%{opacity: 0;}
+  100%{opacity: 1;}
+}

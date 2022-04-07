@@ -1,11 +1,385 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>Href Attribute Example</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page 1</title>
+    <script
+      src="https://kit.fontawesome.com/ccbd4d6bc1.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
-    <h1>Href Attribute Example</h1>
-    <p>
-      <a href="https://www.freecodecamp.org/contribute/">The freeCodeCamp Contribution Page</a> shows you how and where you can contribute to freeCodeCamp's community and growth.
-    </p>
+
+    <!-- Header Start -->
+    <header class="uikit-header-4">
+      <!-- Navbar Start -->
+      <nav class="uikit-expand-nav">
+        <div class="menu-wrap">
+          <input type="checkbox" class="toggler" />
+          <div class="hamburger"><div></div></div>
+          <div class="menu">
+            <div>
+              <div>
+                <ul>
+                  <li><a href="index.html" class="btn btn-2">Home</a></li>
+                  <li><a href="#" class="btn btn-2">About</a></li>
+                  <li><a href="#" class="btn btn-2">Services</a></li>
+                  <li><a href="#" class="btn btn-2">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar End -->
+      <a class="brand" href="index.html"><h3>Everse</h3></a>
+      <div class="header-text">
+        <h1>John Doe</h1>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti,
+          deserunt! Numquam officia eos excepturi veritatis!
+        </p>
+        <a href="#gallery" class="main-btn">Get Started</a>
+      </div>
+      <div class="header-info">
+        <div class="info-item">
+          <h4>Phone</h4>
+          <p>(555) 555-5555</p>
+        </div>
+        <div class="info-item">
+          <h4>Email</h4>
+          <p>example@gmail.com</p>
+        </div>
+        <div class="info-item">
+          <h4>Location</h4>
+          <p>Country. City Name. Address</p>
+        </div>
+      </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Heading Start -->
+    <section class="uikit-heading-1" id="gallery">
+      <h1>Explore</h1>
+      <div class="hr">
+        <div class="hr-line"></div>
+        <div class="hr-circle"></div>
+        <div class="hr-line"></div>
+      </div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi
+        incidunt laboriosam ducimus alias? Optio, quia molestiae quibusdam
+        blanditiis voluptate cum laboriosam id quas saepe eaque?
+      </p>
+    </section>
+    <!-- Heading End -->
+
+      <!-- Gallery  Start -->
+      <div class="uikit-masonry-image-vid-gallery">
+        <div class="images-container">
+          <!--=======================================================-->
+          <!--IINSERT NEW IMAGE & VIDEO ITEMS HERE-->
+          <!-- 'data-title' = Image/Video Title -->
+          <!-- 'data-source' = Video Source -->
+          <!-- 'src' = Video Thumbnail/Image Source -->
+          <div class="item"><img class="img" src="https://picsum.photos/id/1033/900/700" data-title="Oceanside video" data-source="./videos/video.mp4"></div>
+          <div class="item"><img class="img" src="https://picsum.photos/id/1011/900/700" data-title="image2"></div>
+          <div class="item"><img class="img" src="https://picsum.photos/id/1032/900/700" data-title="image2"></div>
+          <div class="item"><img class="img" src="https://picsum.photos/id/1009/900/1000" data-title="River video" data-source="./videos/video.mp4"></div>
+          <div class="item"><img class="img" src="https://picsum.photos/id/1035/900/700" data-title="image4"></div>
+          <div class="item"><img class="img" src="https://picsum.photos/id/1036/900/700" data-title="image5"></div>
+          <div class="item"><img class="img" src="https://picsum.photos/id/1037/900/700" data-title="image2"></div>
+          <div class="item"><img class="img" src="https://picsum.photos/id/1038/900/700" data-title="image6"></div>
+          <div class="item"><img class="img" src="https://picsum.photos/id/1039/900/700" data-title="Forest video" data-source="./videos/video.mp4"></div>
+          <div class="item"><img class="img" src="https://picsum.photos/id/1021/900/700" data-title="image8"></div>
+          <div class="item"><img class="img" src="https://picsum.photos/id/1020/900/700" data-title="image2"></div>
+          <div class="item"><img class="img" src="https://picsum.photos/id/1019/1000/900" data-title="image11"></div>
+          <div class="item"><img class="img" src="https://picsum.photos/id/1018/1000/900" data-title="image9"></div>
+          <div class="item"><img class="img" src="https://picsum.photos/id/1014/900/700" data-title="image10"></div>
+          <!--=======================================================-->
+          <!--=======================================================-->
+        </div>
+        <!-- Modal Start -->
+        <div class="vid-modal-overlay">
+          <div class="arrow-container arrow-container-left"><div class="arrow-left"></div></div>
+          <div class="arrow-container arrow-container-right"><div class="arrow-right"></div></div>
+            <div class="vid-modal">
+                <div class="vid-modal-text">
+                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x-circle vid-close-btn" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path fill-rule="evenodd"
+                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                    <h3 class="vid-title"></h3>
+                    <p><strong>Hint: </strong>You can scroll trought the videos by using the left and right arrow keys on your keyboard</p>
+                </div>
+                <div class="vid-img-container">
+                   <!--Image and video container-->
+                </div>
+            </div>
+        </div>
+        <!-- Modal End -->
+      </div>
+      <!-- Gallery End -->
+
+      <!--Progrss Circles Start -->
+      <section class="uikit-progress-circles-2">
+        <div class="progress-container">
+          <!--Circle-->
+          <div class="progress-card">
+            <div class="progress-circle">
+              <div class="progress-content">
+                <h5 class="progText" data-count="95">0</h5>
+              </div>
+              <div class="progress"></div>
+            </div>
+            <h5>HTML/CSS</h5>
+          </div>
+          <!--Circle-->
+          <div class="progress-card">
+            <div class="progress-circle">
+              <div class="progress-content">
+                <h5 class="progText" data-count="79">0</h5>
+              </div>
+              <div class="progress"></div>
+            </div>
+            <h5>JavaScript</h5>
+          </div>
+          <!--Circle-->
+          <div class="progress-card">
+            <div class="progress-circle">
+              <div class="progress-content">
+                <h5 class="progText" data-count="100">0</h5>
+              </div>
+              <div class="progress"></div>
+            </div>
+            <h5>WordPress</h5>
+          </div>
+          <!--Circle-->
+          <div class="progress-card">
+            <div class="progress-circle">
+              <div class="progress-content">
+                <h5 class="progText" data-count="50">0</h5>
+              </div>
+              <div class="progress"></div>
+            </div>
+            <h5>React</h5>
+          </div>
+        </div>
+      </section>
+      <!--Progrss Circles End -->
+
+      <!-- Heading Start -->
+      <section class="uikit-heading-1" id="contact">
+        <h1>Contact Me</h1>
+        <div class="hr">
+          <div class="hr-line"></div>
+          <div class="hr-circle"></div>
+          <div class="hr-line"></div>
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi
+          incidunt laboriosam ducimus alias? Optio, quia molestiae quibusdam
+          blanditiis voluptate cum laboriosam id quas saepe eaque?
+        </p>
+      </section>
+      <!-- Heading End -->
+
+      <!-- Form Start -->
+      <section class="uikit-contact-form-3">
+        <div class="form-container">
+            <div class="formBx">
+                <form>
+                    <h2>Contact</h2>
+                    <div class="inputBox">
+                        <input type="text" name="" required="required">
+                        <span>Full Name</span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="email" name="" required="required">
+                        <span>Email</span>
+                    </div>
+                    <div class="inputBox">
+                        <textarea type="text" name="" required="required"></textarea>
+                        <span>Content</span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="submit" name="" required="required" value="send">
+                    </div>
+                </form>
+            </div>
+            <div class="imgBox"><img src="./images/image3.jpg" alt=""></div>
+        </div>
+    </section>
+    <!-- Form End -->
+
+    <!-- Split Screen Start -->
+    <section class="uikit-split-screen-1">
+      <div class="layer right">
+        <div class="content-wrap">
+          <div class="content-body">
+            <h1>Contact</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Non sunt
+              rerum quo ad debitis soluta nulla atque porro accusamus vitae.
+            </p>
+          </div>
+          <a href="#" class="btn">Message</a>
+        </div>
+      </div>
+
+      <div class="layer left">
+        <div class="content-wrap">
+          <div class="content-body">
+            <h1>John Doe</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Non sunt
+              rerum quo ad debitis soluta nulla atque porro accusamus vitae.
+            </p>
+          </div>
+          <img src="images/image3.jpg" alt="" />
+          <div class="media-icons">
+            <ul>
+              <li>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-twitch"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="handle"></div>
+    </section>
+    <!-- Split Screen End -->
+
+    <!-- Heading Start -->
+    <section class="uikit-heading-1" id="pricing">
+      <h1>Pricing</h1>
+      <div class="hr">
+        <div class="hr-line"></div>
+        <div class="hr-circle"></div>
+        <div class="hr-line"></div>
+      </div>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi
+        incidunt laboriosam ducimus alias? Optio, quia molestiae quibusdam
+        blanditiis voluptate cum laboriosam id quas saepe eaque?
+      </p>
+    </section>
+    <!-- Heading End -->
+
+    <!-- Pricing Start -->
+    <section class="uikit-pricing-tables-4">
+      <div class="pricing-tables">
+        <div class="table">
+          <h1><i class="fas fa-pen"></i></h1>
+          <h3>Basic</h3>
+          <h1><sup>$</sup>40</h1>
+          <h5>Monthly</h5>
+          <ul class="features">
+            <li><i class="fas fa-check"></i> Feature Name</li>
+            <li><i class="fas fa-check"></i> Feature Name</li>
+            <li> <i class="fas fa-check"></i> Feature Name</li>
+          </ul>
+          <a href="#" class="table-btn">Sign Up</a>
+        </div>
+        <div class="table table-main">
+          <h1><i class="fas fa-pencil-ruler"></i></h1>
+          <h3>Advanced</h3>
+          <h1><sup>$</sup>50</h1>
+          <h5>Monthly</h5>
+          <ul class="features">
+            <li> <i class="fas fa-check"></i> Feature Name</li>
+            <li> <i class="fas fa-check"></i> Feature Name</li>
+            <li> <i class="fas fa-check"></i> Feature Name</li>
+            <li> <i class="fas fa-check"></i> Feature Name</li>
+          </ul>
+          <a href="#" class="table-btn">Sign Up</a>
+        </div>
+        <div class="table">
+          <h1><i class="far fa-gem"></i></i></h1>
+          <h3>Pro</h3>
+          <h1><sup>$</sup>99</h1>
+          <h5>Monthly</h5>
+          <ul class="features">
+            <li> <i class="fas fa-check"></i> Feature Name</li>
+            <li> <i class="fas fa-check"></i> Feature Name</li>
+            <li> <i class="fas fa-check"></i> Feature Name</li>
+            <li> <i class="fas fa-check"></i> Feature Name</li>
+            <li> <i class="fas fa-check"></i> Feature Name</li>
+          </ul>
+          <a href="#" class="table-btn">Sign Up</a>
+        </div>
+      </div>
+    </section>
+    <!-- Pricing End -->
+
+    <!--Google map-->
+    <div class="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.183948656458!2d-73.98773128486171!3d40.75797874273873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2srs!4v1604520292638!5m2!1sen!2srs" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+  </div>
+  <!--Footer Start-->
+  <footer id="uikit-footer-1">
+      <div class="footer-top">
+          <div class="f-col-1">
+              <h2>Everse</h2>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam, deleniti.</p>
+          </div>
+          <div class="f-col-2">
+              <h3>Service1</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              <h3>Service2</h3>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat?</p>
+          </div>
+          <div class="f-col-3">
+              <h3>Contact</h3>
+              <div class="contact-info-item"><div class="icon"><i class="fas fa-phone"></i></div><span>(000) 123 456 7</span></div>
+              <div class="contact-info-item"><div class="icon"><i class="fas fa-envelope"></i></div><span>example@gmail.com</span></div>
+              <div class="contact-info-item"><div class="icon"><i class="fas fa-map-marker"></i></div><span>Country, City Name, Address</span></div>
+          </div>
+          <div class="f-col-4">
+              <h3>About Us</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic dicta autem dolores quod, placeat recusandae minus aperiam blanditiis quam qui?</p>
+          </div>
+      </div>
+      <div class="footer-bottom">
+          <p>&copy; Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi, deserunt.</p>
+      </div>
+  </footer>
+  <!-- Footer End -->
+
+    <script src="js/main.js"></script>
+    <!-- JS Control -->
+    <!-- Change Values To Modify -->
+    <!-- Comment Out, Or Remove To Turn Off -->
+    <script>
+      //Distance From Top When The Nav Menu is Activated, 300 recommended
+      uikitHambNav(300);
+
+      //Masonry Gallery, Max And Min Allowed Thumbnail Height
+      //Heights are randomly generated within these two values
+      masonryImageVideoGallery(36, 16);
+
+      //Progress Circles Count Speed, 50 recommended
+      uiKitProgressCirclesTwo(50);
+
+      //Split Screen On Mouse Move
+      uiKitSplitScreen1();
+    </script>
   </body>
 </html>
