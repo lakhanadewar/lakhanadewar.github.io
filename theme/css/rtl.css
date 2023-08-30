@@ -6,6 +6,8 @@ RIGHT TO LEFT - RTL.CSS
 
 */
 
-body, textarea, input {
-   direction: rtl;
+body,
+textarea,
+input {
+  direction: rtl;
 }
