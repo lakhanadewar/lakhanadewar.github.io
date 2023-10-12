@@ -4,16 +4,14 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Blog | 1 | Blueprint</title>
+    <title>Post | 1 | Blueprint</title>
     <meta name="description" content="" />
     <script src="theme/scripts/jquery.min.js"></script>
     <script src="theme/scripts/main.js"></script>
     <link rel="stylesheet" href="theme/css/bootstrap-grid.css" />
     <link rel="stylesheet" href="theme/css/style.css" />
     <link rel="stylesheet" href="theme/css/glide.css" />
-    <link rel="stylesheet" href="theme/css/content-box.css" />
     <link rel="stylesheet" href="theme/css/social.css" />
-    <link rel="stylesheet" href="skin.css" />
     <link rel="icon" href="media/favicon.png" />
   </head>
   <body class="page-main">
@@ -51,18 +49,10 @@
         </div>
       </div>
     </nav>
-    <header
-      class="header-image ken-burn-center"
-      data-parallax="true"
-      data-natural-height="1080"
-      data-natural-width="1920"
-      data-bleed="0"
-      data-image-src="media/hd-empty.png"
-      data-offset="0"
-    >
+    <header class="header-base">
       <div class="container">
-        <h1>Blog one</h1>
-        <h2>Enjoy a day on the top don't have a price</h2>
+        <h1>The latest post</h1>
+        <h2>Creating and Connecting a Git Repository</h2>
       </div>
     </header>
     <main>
@@ -70,83 +60,85 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-8">
-              <div class="grid-list" data-columns="1">
-                <div class="grid-box">
-                  <div class="grid-item">
-                    <div
-                      class="cnt-box cnt-box-blog-side boxed"
-                      data-href="git_post.html"
-                    >
-                      <a href="git_post.html" class="img-box">
-                        <div class="blog-date">
-                          <span>18</span>
-                          <span>Sept 2023</span>
-                        </div>
-                        <img src="media/wide.png" alt="" />
-                      </a>
-                      <div class="caption">
-                        <h2>Git Repository Setup</h2>
-                        <ul class="icon-list icon-list-horizontal">
-                          <li>
-                            <i class="icon-calendar"></i
-                            ><a href="#">18/09/2023</a>
-                          </li>
-                          <li>
-                            <i class="icon-bookmark"></i><a href="#">Git</a>
-                          </li>
-                          <li>
-                            <i class="icon-user"></i><a href="#">Admin</a>
-                          </li>
-                        </ul>
-                        <p>
-                          Here's a step-by-step guide on how to create a Git repository, connect it to a remote repository, and perform basic operations. This guide assumes you already have Git installed ...
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- <div class="grid-item">
-                    <div
-                      class="cnt-box cnt-box-blog-side boxed"
-                      data-href="post.html"
-                    >
-                      <a href="post.html" class="img-box">
-                        <div class="blog-date">
-                          <span>09</span>
-                          <span>JAN 2020</span>
-                        </div>
-                        <img src="media/wide.png" alt="" />
-                      </a>
-                      <div class="caption">
-                        <h2>Content box</h2>
-                        <ul class="icon-list icon-list-horizontal">
-                          <li>
-                            <i class="icon-calendar"></i
-                            ><a href="#">01 / 15 / 2020</a>
-                          </li>
-                          <li>
-                            <i class="icon-bookmark"></i><a href="#">Treks</a>
-                          </li>
-                          <li>
-                            <i class="icon-user"></i><a href="#">Admin</a>
-                          </li>
-                        </ul>
-                        <p>
-                          Lorem ipsum dolor sitamet consectetur adipisicing
-                          elito sed do eiusmod tempore.amet consectetur
-                          adipisicing elito sed do eiusmod tempore.
-                        </p>
-                      </div>
-                    </div>
-                  </div> -->
-                  
-                </div>
-                <div class="list-pagination">
-                  <ul
-                    class="pagination"
-                    data-page-items="4"
-                    data-options="scrollTop:true"
-                  ></ul>
-                </div>
+              <img src="media/hd.png" alt="" />
+              <hr class="space-sm" />
+              <div class="icon-links icon-links-grid icon-social social-colors">
+                <a data-social="share-facebook" class="facebook"
+                  ><i class="icon-facebook"></i
+                ></a>
+                <a data-social="share-twitter" class="twitter"
+                  ><i class="icon-twitter"></i
+                ></a>
+                <a data-social="share-linkedin" class="linkedin"
+                  ><i class="icon-linkedin"></i
+                ></a>
+                <a data-social="share-google" class="google"
+                  ><i class="icon-google"></i
+                ></a>
+              </div>
+              <hr class="space-sm" />
+              
+    <h2>Step 1: Create a Local Git Repository</h2>
+    <ol>
+        <li>Open your terminal or command prompt.</li>
+        <li>Navigate to the directory where you want to create your new Git repository:</li>
+        <pre><code>cd /path/to/your/directory</code></pre>
+        <li>Initialize a new Git repository in that directory:</li>
+        <pre><code>git init</code></pre>
+    </ol>
+
+    <h2>Step 2: Create a Remote Repository</h2>
+    <ol>
+        <li>Go to your chosen platform (e.g., GitHub, GitLab, Bitbucket).</li>
+        <li>Log in to your account or create a new one if needed.</li>
+        <li>Create a new repository on the platform by following their interface instructions. Give it a name and any other desired settings.</li>
+    </ol>
+
+    <h2>Step 3: Connect Local and Remote Repositories</h2>
+    <ol>
+        <li>Link the local repository to the remote repository:</li>
+        <pre><code>git remote add origin &lt;remote_repository_url&gt;</code></pre>
+        <p>Replace &lt;remote_repository_url&gt; with the URL of your remote repository (e.g., <code>https://github.com/username/repo.git</code>).</p>
+        <li>Verify that the remote URL has been set correctly:</li>
+        <pre><code>git remote -v</code></pre>
+        <p>It should list the origin with both the fetch and push URLs.</p>
+    </ol>
+
+    <h2>Step 4: Add and Commit Files</h2>
+    <ol>
+        <li>Create or copy files into your local repository directory.</li>
+        <li>Add the files to the staging area:</li>
+        <pre><code>git add .</code></pre>
+        <p>This stages all changes in the current directory. You can also specify individual files.</p>
+        <li>Commit the changes with a descriptive message:</li>
+        <pre><code>git commit -m "Initial commit"</code></pre>
+    </ol>
+
+    <h2>Step 5: Push Local Changes to the Remote Repository</h2>
+    <ol>
+        <li>Push your local changes to the remote repository:</li>
+        <pre><code>git push -u origin master</code></pre>
+        <p>This pushes the changes from your local <code>master</code> branch to the remote repository. The <code>-u</code> flag sets up tracking so that you can simply use <code>git push</code> in the future.</p>
+    </ol>
+
+    <h2>Step 6: Pull Changes from the Remote Repository (Optional)</h2>
+    <p>If you're working with others or want to sync with changes made on the remote repository:</p>
+    <pre><code>git pull origin master</code></pre>
+    <p>This fetches changes from the remote repository and merges them into your local branch.</p>
+
+    <h2>Step 7: Branching (Optional)</h2>
+    <p>You can create and switch to different branches to work on specific features or fixes:</p>
+    <pre><code>git branch feature-branch</code></pre>
+    <pre><code>git checkout feature-branch</code></pre>
+
+    <h2>Step 8: Continue Development and Collaboration</h2>
+    <p>Now that your local and remote repositories are connected, you can continue to develop your project, collaborate with others, and use Git to manage version control.</p>
+    <p>Remember to regularly commit and push your changes to keep your local and remote repositories in sync.</p>
+
+              <div class="list-nav">
+                <a href="#">Previous post</a>
+                <a class="list-archive" href="#"></a>
+                <a href="#">Next post</a>
               </div>
             </div>
             <div class="col-lg-4">
@@ -161,7 +153,7 @@
               </form>
               <hr class="space-sm" />
               <h3>Categories</h3>
-              <hr class="space-xs" />
+              <hr class="space-sm" />
               <div class="menu-inner menu-inner-vertical">
                 <ul>
                   <li>
@@ -278,9 +270,7 @@
         href="theme/media/icons/iconsmind/line-icons.min.css"
       />
       <script src="theme/scripts/parallax.min.js"></script>
-      <script src="theme/scripts/imagesloaded.min.js"></script>
       <script src="theme/scripts/glide.min.js"></script>
-      <script src="theme/scripts/pagination.min.js"></script>
       <script src="theme/scripts/social.min.js"></script>
     </footer>
   </body>
