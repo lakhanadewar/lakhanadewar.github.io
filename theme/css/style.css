@@ -623,6 +623,30 @@ IMAGE - SECTION
   background-position: center center;
 }
 
+/* My custom code for overlay */
+.section-home-alpins {
+  position: relative;
+  background-image: url('https://source.unsplash.com/random/800x600?technology');
+  background-size: cover;
+  background-position: center;
+}
+
+.section-home-alpins::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* White color with 50% opacity */
+  z-index: 1;
+}
+
+.section-home-alpins * {
+  position: relative;
+  z-index: 2;
+}
+
 .section-image.bg-top {
   background-position: top;
 }
