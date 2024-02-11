@@ -1,4 +1,4 @@
-﻿<!doctype html>
+﻿<!DOCTYPE html>
 <!--[if lt IE 10]> <html  lang="en" class="iex"> <![endif]-->
 <!--[if (gt IE 10)|!(IE)]><!-->
 <html lang="en">
@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About | 2 | Blueprint</title>
+    <title>About | 2 | Random Tech Quote</title>
     <meta name="description" content="" />
     <script src="theme/scripts/jquery.min.js"></script>
     <script src="theme/scripts/main.js"></script>
@@ -30,19 +30,19 @@
         <i class="menu-btn"></i>
         <div class="menu-cnt">
           <ul id="main-menu">
-            <li class="dropdown">
+            <li class="text-uppercase">
               <a href="/index.html">Home</a>
             </li>
-            <li class="dropdown">
-              <a href="/about-1.html">About Us</a>
+            <li class="text-uppercase">
+              <a href="/about-2.html">About Us</a>
             </li>
-            <li class="dropdown">
+            <li class="text-uppercase">
               <a href="/blog-1.html">Blog</a>
             </li>
-            <li class="dropdown">
+            <li class="text-uppercase">
               <a href="/resources.html">Resources</a>
             </li>
-            <li class="dropdown">
+            <li class="text-uppercase">
               <a href="/contacts-1.html">Contact</a>
             </li>
             <li>
@@ -62,7 +62,7 @@
       data-offset="0"
     >
       <div class="container">
-        <h1>About two</h1>
+        <h1>About Me</h1>
         <h2>Talent wins games, but teamwork win championships</h2>
       </div>
     </header>
@@ -71,34 +71,41 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-6">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipiscing elitsed do
-                eiusmod tempor incididunt utlabore et dolore magna aliqua.
-                Utenim ad minim veniam quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex rud exercitation ullamco lconsequat. Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum
-                dolore eu fadipisis nisi ut aliquip ex ea aliquip ex rud
-                exercitation ullamco lcon commodo consequat. Utenim ad minim
-                veniam quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                in voluptate velit esse cillum dolore
+              <p class="textjustify">
+                A dedicated Senior Test Automation Engineer with a deep
+                understanding of web and mobile automation frameworks, I am
+                equipped to design and implement robust testing strategies for
+                diverse applications. My experience is marked by profound
+                expertise in JAVA and JavaScript, and is complemented by a
+                strong foundation in OOPs concepts, String Class methods,
+                collections, and exception handling. My proficiency in both web
+                and mobile domains, coupled with an analytical mindset, uniquely
+                positions me to tackle complex testing challenges in a
+                fast-paced development environment. Eager to apply my technical
+                skills and comprehensive knowledge in automation, I aim to drive
+                quality assurance and improve software performance in a dynamic
+                team setting.
               </p>
               <hr class="space-sm" />
               <hr class="space-xs" />
-              <a href="#" class="btn-sm btn btn-circle">Read more</a>
-              <a href="#" class="btn-sm btn btn-circle btn-border">View team</a>
+              <a href="#" class="btn-sm btn btn-circle">Certificates</a>
+              <a href="#" class="btn-sm btn btn-circle btn-border"
+                >Technology</a
+              >
             </div>
             <div class="col-lg-6">
               <div class="cnt-box cnt-box-side">
                 <a href="#" class="img-box"
-                  ><img src="media/user.png" alt=""
+                  ><img
+                    src="media/LakhanPersonalPagePhoto.png"
+                    alt="LakhanPersonalPagePhoto"
                 /></a>
                 <div class="caption">
-                  <h2>Richard Parker</h2>
-                  <span class="extra-field">Founder and CEO</span>
+                  <h2>Lakhan Adewar</h2>
+                  <span class="extra-field">Senior Software Engineer</span>
                   <p>
-                    Lorem ipsum dolor sitamet consectetur adipisicing elito sed
-                    do eiusmod tempore.
+                    Automation Test Engineer with experience in the automation
+                    of web and mobile applications.
                   </p>
                 </div>
               </div>
@@ -108,18 +115,19 @@
                   <tr>
                     <td>
                       <h4>Nationality</h4>
-                      <p>Italian</p>
+                      <p>Indian</p>
                     </td>
                     <td>
                       <h4>Languages</h4>
                       <p>English</p>
+                      <p>Marathi</p>
+                      <p>Hindi</p>
                     </td>
                     <td>
                       <div
                         class="icon-links icon-social icon-links-grid social-colors"
                       >
-                        <a class="facebook"><i class="icon-facebook"></i></a>
-                        <a class="twitter"><i class="icon-twitter"></i></a>
+                        <a class="linkedin"><i class="icon-linkedin"></i></a>
                       </div>
                     </td>
                   </tr>
@@ -223,23 +231,25 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
-            <h3>Blueprint</h3>
-            <p>
-              A blueprint is a reproduction of a technical drawing using a
-              contact print process on light-sensitive sheets. The process
-              allowed rapid production of an unlimited copies.
-            </p>
+            <h3>Random Tech Quote</h3>
+            <p id="quote">Loading quote...</p>
+            <button
+              onclick="getRandomQuote()"
+              class="btn btn-circle btn-border"
+            >
+              Get New Quote
+            </button>
           </div>
           <div class="col-lg-4">
             <h3>Contacts</h3>
             <ul class="icon-list icon-line">
               <li>The world wide web</li>
-              <li>support@schiocco.com</li>
+              <li>lakhanadewar@gmail.com</li>
               <li>02 123 333 444</li>
             </ul>
           </div>
           <div class="col-lg-4">
-            <div class="icon-links icon-social icon-links-grid">
+            <div class="icon-links icon-social icon-links-grid social-colors-hover">
               <a class="facebook"><i class="icon-facebook"></i></a>
               <a class="twitter"><i class="icon-twitter"></i></a>
               <a class="instagram"><i class="icon-instagram"></i></a>

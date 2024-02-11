@@ -8,6 +8,46 @@ function cssInit(delay, speed) {
     "transition-delay": delay,
   };
 }
+//To get Random Quotes js
+function getRandomQuote() {
+  fetch("https://api.quotable.io/random?tags=technology")
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById(
+        "quote"
+      ).innerText = `"${data.content}" - ${data.author}`;
+    })
+    .catch((error) => {
+      console.error("Error fetching quote:", error);
+      document.getElementById("quote").innerText = "Failed to load quote.";
+    });
+}
+
+document.addEventListener("DOMContentLoaded", getRandomQuote);
+
+// To get random img from ninja images api=HPd1gvray3/8ErpM3z/suQ==bTKOEtJSENEZwgdc
+function fetchImage() {
+  fetch(
+    "https://api.api-ninjas.com/v1/randomimage?category=nature&width=340&height=200",
+    {
+      headers: {
+        "X-Api-Key": "HPd1gvray3/8ErpM3z/suQ==bTKOEtJSENEZwgdc",
+        Accept: "image/jpg",
+      },
+    }
+  )
+    .then((response) => response.blob())
+    .then((imageBlob) => {
+      document.getElementById("natureImage").src =
+        URL.createObjectURL(imageBlob);
+    })
+    .catch((error) => console.error("Error:", error));
+}
+
+// Fetch a new image 24 hour
+fetchImage();
+setInterval(fetchImage, 86400000);
+
 function initAnima(obj) {
   (function ($) {
     var animaTimeout = $.fn.getGlobalVar("animaTimeout");
@@ -204,8 +244,8 @@ window.onload = function () {
 function getURLParameter(name) {
   return decodeURIComponent(
     (new RegExp("[?|&]" + name + "=" + "([^&;]+?)(&|#|;|$)").exec(
-      location.search,
-    ) || [, ""])[1].replace(/\+/g, "%20") || "",
+      location.search
+    ) || [, ""])[1].replace(/\+/g, "%20") || ""
   );
 }
 function openWindow(link, width, height) {
@@ -223,7 +263,7 @@ function openWindow(link, width, height) {
       ", top=" +
       top +
       ", left=" +
-      left,
+      left
   );
   return false;
 }
@@ -249,7 +289,7 @@ function onePageScroll(t) {
                   } else {
                     location.hash = target;
                   }
-                },
+                }
               );
           } catch (e) {}
         } else {
@@ -268,7 +308,7 @@ function getOptionsString(txt, mainArray) {
   var optionsArr = txt.split(",");
   for (var i = 0; i < optionsArr.length; i++) {
     mainArray[optionsArr[i].split(":")[0]] = correctValue(
-      optionsArr[i].split(":")[1],
+      optionsArr[i].split(":")[1]
     );
   }
   return mainArray;
@@ -329,7 +369,7 @@ function isScrollView(t) {
     parallax_items = $(body).find("[data-parallax]");
     footer_parallax = $(body).find(" > footer.footer-parallax");
     sections_slider_parallax = $(body).find(
-      " > main > .section-slider[data-slider-parallax]",
+      " > main > .section-slider[data-slider-parallax]"
     );
     if (!isEmpty(getURLParameter("hc"))) front_composer = true;
     $(body).on("click", "[data-social]", function () {
@@ -399,7 +439,7 @@ function isScrollView(t) {
             .css("opacity", 0)
             .css("transition-duration", "0ms")
             .showAnima($("nav").data("menu-anima"));
-        },
+        }
       );
       $(body).on("mouseenter", ".menu-subline .menu-cnt > ul li", function () {
         $(nav)
@@ -453,7 +493,7 @@ function isScrollView(t) {
           }
         }
       });
-      $(nav).on("click", ".dropdown > a", function (e) {
+      $(nav).on("click", ".text-uppercase > a", function (e) {
         e.preventDefault();
       });
       $(body).on("click", ".shop-menu-cnt", function () {
@@ -464,7 +504,7 @@ function isScrollView(t) {
         ".menu-inner:not(.menu-inner-vertical) > ul > li > a",
         function () {
           $(this).parent().toggleClass("active");
-        },
+        }
       );
       if ($(nav).hasClass("menu-fixed")) {
         $(nav)
@@ -474,7 +514,7 @@ function isScrollView(t) {
             window_height -
               5 -
               $(nav).find(" > .container").outerHeight() +
-              "px",
+              "px"
           );
       }
     }
@@ -501,9 +541,12 @@ function isScrollView(t) {
         }, 300);
       });
     });
-    $(body).on("click", ".menu-inner-vertical .dropdown", function () {
+    $(body).on("click", ".menu-inner-vertical .text-uppercase", function () {
       var active = $(this).hasClass("active");
-      $(this).closest(".menu-inner").find(".dropdown").removeClass("active");
+      $(this)
+        .closest(".menu-inner")
+        .find(".text-uppercase")
+        .removeClass("active");
       if (!active) $(this).addClass("active");
     });
     $(body).on(
@@ -511,7 +554,7 @@ function isScrollView(t) {
       ".menu-inner:not(.menu-inner-vertical) > div",
       function () {
         $(this).parent().toggleClass("active");
-      },
+      }
     );
     onePageScroll($(".menu-inner,.menu-one-page"));
     if (
@@ -578,10 +621,10 @@ function isScrollView(t) {
       .find("a")
       .each(function () {
         if ($(this).attr("href") == window.location.href) {
-          if ($(this).closest(".dropdown-menu").length) {
+          if ($(this).closest(".text-uppercase-menu").length) {
             $(this)
               .closest(
-                ".dropdown.multi-level:not(.dropdown-submenu),.dropdown.mega-dropdown",
+                ".text-uppercase.multi-level:not(.text-uppercase-submenu),.text-uppercase.mega-text-uppercase"
               )
               .addClass("active");
           } else {
@@ -672,7 +715,7 @@ function isScrollView(t) {
         var target = $(this).find("a").attr("href");
         if (target.length > 1) {
           scroll_detect_items.push(
-            $(body).find($(this).find("a").attr("href")),
+            $(body).find($(this).find("a").attr("href"))
           );
         }
       });
@@ -874,12 +917,12 @@ function isScrollView(t) {
     });
     $(body)
       .find(
-        ".grid-list.list-gallery .grid-box,.maso-list.list-gallery .maso-box, .lightbox,.box-lightbox,.lightbox-trigger,.woocommerce-product-gallery__image a",
+        ".grid-list.list-gallery .grid-box,.maso-list.list-gallery .maso-box, .lightbox,.box-lightbox,.lightbox-trigger,.woocommerce-product-gallery__image a"
       )
       .executeFunction("magnificPopup", function () {
         $(body)
           .find(
-            ".grid-list.list-gallery .grid-box,.maso-list.list-gallery .maso-box,.lightbox,.woocommerce-product-gallery__image a",
+            ".grid-list.list-gallery .grid-box,.maso-list.list-gallery .maso-box,.lightbox,.woocommerce-product-gallery__image a"
           )
           .each(function () {
             $(this).initMagnificPopup();
@@ -903,13 +946,13 @@ function isScrollView(t) {
               id +
                 ".grid-box .grid-item:nth-child(" +
                 url.replace("list-", "") +
-                ") .img-box",
+                ") .img-box"
             ).click();
             $(
               id +
                 ".maso-box .maso-item:nth-child(" +
                 url.replace("list-", "") +
-                ") .img-box",
+                ") .img-box"
             ).click();
           } else {
             if (url.indexOf("slide") > -1) {
@@ -917,7 +960,7 @@ function isScrollView(t) {
                 id +
                   ".slides > li:nth-child(" +
                   url.replace("slide-", "") +
-                  ") .img-box",
+                  ") .img-box"
               ).click();
             } else {
               var t = $("#" + url);
@@ -1046,7 +1089,7 @@ function isScrollView(t) {
             (u = encodeURIComponent(String(u))),
             (u = u.replace(
               /%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,
-              decodeURIComponent,
+              decodeURIComponent
             )),
             (t = encodeURIComponent(String(t))),
             (t = t.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)),
@@ -1206,7 +1249,7 @@ function isScrollView(t) {
           id +
           "&amp;vq=hd1080&amp;loop=1&amp;start=0&amp;autoplay=1&amp;mute=1&amp;controls=0&amp;showinfo=0&amp;wmode=transparent&amp;iv_load_policy=3&amp;modestbranding=1&amp;rel=0&amp;enablejsapi=1&amp;volume=0" +
           pars +
-          '"></iframe>',
+          '"></iframe>'
       );
     }
   };
@@ -1304,7 +1347,7 @@ function isScrollView(t) {
             if (imgHeight > colHeight) {
               $(image.img).css(
                 "margin-top",
-                "-" + Math.floor((imgHeight - colHeight) / 2) + "px",
+                "-" + Math.floor((imgHeight - colHeight) / 2) + "px"
               );
             } else {
               var proportion = colHeight / imgHeight;
@@ -1315,7 +1358,7 @@ function isScrollView(t) {
                   .css("width", Math.ceil(newWidth) + "px");
                 $(image.img).css(
                   "margin-left",
-                  "-" + Math.floor((newWidth - colWidth) / 2) + "px",
+                  "-" + Math.floor((newWidth - colWidth) / 2) + "px"
                 );
               }
             }

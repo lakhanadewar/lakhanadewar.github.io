@@ -1,10 +1,10 @@
-﻿<!doctype html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Post | 1 | Blueprint</title>
+    <title>Post | 1 | Random Tech Quote</title>
     <meta name="description" content="" />
     <script src="theme/scripts/jquery.min.js"></script>
     <script src="theme/scripts/main.js"></script>
@@ -27,19 +27,19 @@
         <i class="menu-btn"></i>
         <div class="menu-cnt">
           <ul id="main-menu">
-            <li class="dropdown">
+            <li class="text-uppercase">
               <a href="/index.html">Home</a>
             </li>
-            <li class="dropdown">
-              <a href="/about-1.html">About Us</a>
+            <li class="text-uppercase">
+              <a href="/about-2.html">About Us</a>
             </li>
-            <li class="dropdown">
+            <li class="text-uppercase">
               <a href="/blog-1.html">Blog</a>
             </li>
-            <li class="dropdown">
+            <li class="text-uppercase">
               <a href="/resources.html">Resources</a>
             </li>
-            <li class="dropdown">
+            <li class="text-uppercase">
               <a href="/contacts-1.html">Contact</a>
             </li>
             <li>
@@ -60,7 +60,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-8">
-              <img src="media/hd.png" alt="" />
+              <img src="media/BlogPost/GitHubRepoPost.png" alt="" />
               <hr class="space-sm" />
               <div class="icon-links icon-links-grid icon-social social-colors">
                 <a data-social="share-facebook" class="facebook"
@@ -77,63 +77,117 @@
                 ></a>
               </div>
               <hr class="space-sm" />
-              
-    <h2>Step 1: Create a Local Git Repository</h2>
-    <ol>
-        <li>Open your terminal or command prompt.</li>
-        <li>Navigate to the directory where you want to create your new Git repository:</li>
-        <pre><code>cd /path/to/your/directory</code></pre>
-        <li>Initialize a new Git repository in that directory:</li>
-        <pre><code>git init</code></pre>
-    </ol>
+              <p>
+                Git is a widely-used version control system that enables
+                developers to track changes in their codebase, facilitating
+                collaboration and efficient management of projects. GitLab, on
+                the other hand, is a web-based DevOps platform that extends
+                Git's functionalities, offering a comprehensive suite for
+                software development, from project planning and source code
+                management to CI/CD and monitoring. Together, Git and GitLab
+                provide a robust ecosystem for coding, testing, and deploying
+                software, making them essential tools for modern software
+                development teams.
+              </p>
+              <h2>Step 1: Create a Local Git Repository</h2>
+              <ol>
+                <li>Open your terminal or command prompt.</li>
+                <li>
+                  Navigate to the directory where you want to create your new
+                  Git repository:
+                </li>
+                <pre><code class="code-snippet">cd /path/to/your/directory</code></pre>
+                <li>Initialize a new Git repository in that directory:</li>
+                <pre><code class="code-snippet">git init</code></pre>
+              </ol>
 
-    <h2>Step 2: Create a Remote Repository</h2>
-    <ol>
-        <li>Go to your chosen platform (e.g., GitHub, GitLab, Bitbucket).</li>
-        <li>Log in to your account or create a new one if needed.</li>
-        <li>Create a new repository on the platform by following their interface instructions. Give it a name and any other desired settings.</li>
-    </ol>
+              <h2>Step 2: Create a Remote Repository</h2>
+              <ol>
+                <li>
+                  Go to your chosen platform (e.g., GitHub, GitLab, Bitbucket).
+                </li>
+                <li>Log in to your account or create a new one if needed.</li>
+                <li>
+                  Create a new repository on the platform by following their
+                  interface instructions. Give it a name and any other desired
+                  settings.
+                </li>
+              </ol>
 
-    <h2>Step 3: Connect Local and Remote Repositories</h2>
-    <ol>
-        <li>Link the local repository to the remote repository:</li>
-        <pre><code>git remote add origin &lt;remote_repository_url&gt;</code></pre>
-        <p>Replace &lt;remote_repository_url&gt; with the URL of your remote repository (e.g., <code>https://github.com/username/repo.git</code>).</p>
-        <li>Verify that the remote URL has been set correctly:</li>
-        <pre><code>git remote -v</code></pre>
-        <p>It should list the origin with both the fetch and push URLs.</p>
-    </ol>
+              <h2>Step 3: Connect Local and Remote Repositories</h2>
+              <ol>
+                <li>Link the local repository to the remote repository:</li>
+                <pre><code class="code-snippet">git remote add origin &lt;remote_repository_url&gt;</code></pre>
+                <p>
+                  Replace &lt;remote_repository_url&gt; with the URL of your
+                  remote repository (e.g.,
+                  <code class="code-snippet">https://github.com/username/repo.git</code>).
+                </p>
+                <li>Verify that the remote URL has been set correctly:</li>
+                <pre><code class="code-snippet">git remote -v</code></pre>
+                <p>
+                  It should list the origin with both the fetch and push URLs.
+                </p>
+              </ol>
 
-    <h2>Step 4: Add and Commit Files</h2>
-    <ol>
-        <li>Create or copy files into your local repository directory.</li>
-        <li>Add the files to the staging area:</li>
-        <pre><code>git add .</code></pre>
-        <p>This stages all changes in the current directory. You can also specify individual files.</p>
-        <li>Commit the changes with a descriptive message:</li>
-        <pre><code>git commit -m "Initial commit"</code></pre>
-    </ol>
+              <h2>Step 4: Add and Commit Files</h2>
+              <ol>
+                <li>
+                  Create or copy files into your local repository directory.
+                </li>
+                <li>Add the files to the staging area:</li>
+                <pre><code class="code-snippet">git add .</code></pre>
+                <p>
+                  This stages all changes in the current directory. You can also
+                  specify individual files.
+                </p>
+                <li>Commit the changes with a descriptive message:</li>
+                <pre><code class="code-snippet">git commit -m "Initial commit"</code></pre>
+              </ol>
 
-    <h2>Step 5: Push Local Changes to the Remote Repository</h2>
-    <ol>
-        <li>Push your local changes to the remote repository:</li>
-        <pre><code>git push -u origin master</code></pre>
-        <p>This pushes the changes from your local <code>master</code> branch to the remote repository. The <code>-u</code> flag sets up tracking so that you can simply use <code>git push</code> in the future.</p>
-    </ol>
+              <h2>Step 5: Push Local Changes to the Remote Repository</h2>
+              <ol>
+                <li>Push your local changes to the remote repository:</li>
+                <pre><code class="code-snippet">git push -u origin master</code></pre>
+                <p>
+                  This pushes the changes from your local
+                  <code class="code-snippet">master</code> branch to the remote repository. The
+                  <code class="code-snippet">-u</code> flag sets up tracking so that you can simply
+                  use <code class="code-snippet">git push</code> in the future.
+                </p>
+              </ol>
 
-    <h2>Step 6: Pull Changes from the Remote Repository (Optional)</h2>
-    <p>If you're working with others or want to sync with changes made on the remote repository:</p>
-    <pre><code>git pull origin master</code></pre>
-    <p>This fetches changes from the remote repository and merges them into your local branch.</p>
+              <h2>
+                Step 6: Pull Changes from the Remote Repository (Optional)
+              </h2>
+              <p>
+                If you're working with others or want to sync with changes made
+                on the remote repository:
+              </p>
+              <pre><code class="code-snippet">git pull origin master</code></pre>
+              <p>
+                This fetches changes from the remote repository and merges them
+                into your local branch.
+              </p>
 
-    <h2>Step 7: Branching (Optional)</h2>
-    <p>You can create and switch to different branches to work on specific features or fixes:</p>
-    <pre><code>git branch feature-branch</code></pre>
-    <pre><code>git checkout feature-branch</code></pre>
+              <h2>Step 7: Branching (Optional)</h2>
+              <p>
+                You can create and switch to different branches to work on
+                specific features or fixes:
+              </p>
+              <pre><code class="code-snippet">git branch feature-branch</code></pre>
+              <pre><code class="code-snippet">git checkout feature-branch</code></pre>
 
-    <h2>Step 8: Continue Development and Collaboration</h2>
-    <p>Now that your local and remote repositories are connected, you can continue to develop your project, collaborate with others, and use Git to manage version control.</p>
-    <p>Remember to regularly commit and push your changes to keep your local and remote repositories in sync.</p>
+              <h2>Step 8: Continue Development and Collaboration</h2>
+              <p>
+                Now that your local and remote repositories are connected, you
+                can continue to develop your project, collaborate with others,
+                and use Git to manage version control.
+              </p>
+              <p>
+                Remember to regularly commit and push your changes to keep your
+                local and remote repositories in sync.
+              </p>
 
               <div class="list-nav">
                 <a href="#">Previous post</a>
@@ -157,23 +211,24 @@
               <div class="menu-inner menu-inner-vertical">
                 <ul>
                   <li>
-                    <a href="#"> Treks and paths </a>
+                    <a href="#"> Automation Web & Mobile </a>
                   </li>
                   <li>
-                    <a href="#"> Travels </a>
+                    <a href="#"> Git </a>
+                  </li>
+
+                  <li>
+                    <a href="#"> CI/CD </a>
                   </li>
                   <li>
-                    <a href="#"> People and kids </a>
-                  </li>
-                  <li>
-                    <a href="#"> Animals and nature </a>
+                    <a href="#"> Books </a>
                   </li>
                 </ul>
               </div>
-              <hr class="space-sm" />
+              <!-- <hr class="space-sm" />
               <h3>Latest posts</h3>
-              <hr class="space-sm" />
-              <div class="menu-inner menu-inner-vertical menu-inner-image">
+              <hr class="space-sm" /> -->
+              <!-- <div class="menu-inner menu-inner-vertical menu-inner-image">
                 <ul>
                   <li>
                     <a href="#">
@@ -204,15 +259,15 @@
                     </a>
                   </li>
                 </ul>
-              </div>
+              </div> -->
               <hr class="space-sm" />
-              <h3>Twitter</h3>
-              <hr class="space-sm" />
-              <div
+              <!-- <h3>Twitter</h3>
+              <hr class="space-sm" /> -->
+              <!-- <div
                 class="social-feed social-feed-tw social-slider"
                 data-social-id="twitter"
                 data-options="count:8,arrows:true,nav:true,controls:out,type:carousel,perView:1"
-              ></div>
+              ></div> -->
             </div>
           </div>
         </div>
@@ -222,23 +277,20 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
-            <h3>Blueprint</h3>
-            <p>
-              A blueprint is a reproduction of a technical drawing using a
-              contact print process on light-sensitive sheets. The process
-              allowed rapid production of an unlimited copies.
-            </p>
+            <h3>Random Tech Quote</h3>
+            <p id="quote">Loading quote...</p>
+            <button onclick="getRandomQuote()" class="btn btn-circle btn-border">Get New Quote</button>
           </div>
           <div class="col-lg-4">
             <h3>Contacts</h3>
             <ul class="icon-list icon-line">
               <li>The world wide web</li>
-              <li>support@schiocco.com</li>
+              <li>lakhanadewar@gmail.com</li>
               <li>02 123 333 444</li>
             </ul>
           </div>
           <div class="col-lg-4">
-            <div class="icon-links icon-social icon-links-grid">
+            <div class="icon-links icon-social icon-links-grid social-colors-hover">
               <a class="facebook"><i class="icon-facebook"></i></a>
               <a class="twitter"><i class="icon-twitter"></i></a>
               <a class="instagram"><i class="icon-instagram"></i></a>

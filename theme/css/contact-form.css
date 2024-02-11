@@ -157,7 +157,7 @@ form.form-box textarea {
   border: 5px solid transparent;
 }
 
-.datepicker-dropdown {
+.datepicker-text-uppercase {
   position: absolute;
   z-index: 9 !important;
   -webkit-box-sizing: content-box;

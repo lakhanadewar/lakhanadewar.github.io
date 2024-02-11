@@ -503,7 +503,7 @@ function isScrollView(t) {
           }
         }
       });
-      $(nav).on("click", ".dropdown > a", function (e) {
+      $(nav).on("click", ".text-uppercase > a", function (e) {
         e.preventDefault();
       });
       $(body).on("click", ".shop-menu-cnt", function () {
@@ -557,9 +557,9 @@ function isScrollView(t) {
         },
       );
     });
-    $(body).on("click", ".menu-inner-vertical .dropdown", function () {
+    $(body).on("click", ".menu-inner-vertical .text-uppercase", function () {
       var active = $(this).hasClass("active");
-      $(this).closest(".menu-inner").find(".dropdown").removeClass("active");
+      $(this).closest(".menu-inner").find(".text-uppercase").removeClass("active");
       if (!active) $(this).addClass("active");
     });
     $(body).on(
@@ -638,10 +638,10 @@ function isScrollView(t) {
       .find("a")
       .each(function () {
         if ($(this).attr("href") == window.location.href) {
-          if ($(this).closest(".dropdown-menu").length) {
+          if ($(this).closest(".text-uppercase-menu").length) {
             $(this)
               .closest(
-                ".dropdown.multi-level:not(.dropdown-submenu),.dropdown.mega-dropdown",
+                ".text-uppercase.multi-level:not(.text-uppercase-submenu),.text-uppercase.mega-text-uppercase",
               )
               .addClass("active");
           } else {
