@@ -9,31 +9,6 @@ function cssInit(delay, speed) {
   };
 }
 
-//date
-<script>
-function updateTime() {
-    const now = new Date();
-    const options = { 
-        year: 'numeric', 
-        month: 'short', 
-        day: 'numeric', 
-        hour: '2-digit', 
-        minute: '2-digit', 
-        second: '2-digit',
-        hour12: true 
-    };
-    
-    const formattedDate = now.toLocaleDateString('en-US', options);
-    document.getElementById('date-time').textContent = formattedDate.replace(",", "") + " | " + now.toLocaleTimeString('en-US', { hour12: true });
-}
-
-setInterval(updateTime, 1000);
-updateTime();  // Initial call to display time immediately on load
-</script>
-
-
-
-
 //To get Random Quotes js
 function getRandomQuote() {
   fetch("https://api.quotable.io/random?tags=technology")
