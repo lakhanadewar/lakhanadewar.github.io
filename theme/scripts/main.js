@@ -9,131 +9,167 @@ function cssInit(delay, speed) {
   };
 }
 
-//To get Random Quotes js
-function getRandomQuote() {
-  fetch("https://api.quotable.io/random?tags=technology")
-    .then((response) => response.json())
-    .then((data) => {
-      document.getElementById(
-        "quote"
-      ).innerText = `"${data.content}" - ${data.author}`;
-    })
-    .catch((error) => {
-      console.error("Error fetching quote:", error);
-      document.getElementById("quote").innerText = "Failed to load quote.";
-    });
+// QuoteManager class to handle loading and displaying quotes
+class QuoteManager {
+  constructor(dataUrl, footerElementId) {
+    this.dataUrl = dataUrl;
+    this.footerElementId = footerElementId;
+  }
+
+  // Method to fetch quotes from an external JSON file
+  async loadQuotes() {
+    try {
+      const response = await fetch(this.dataUrl);
+      this.quotes = await response.json();
+    } catch (error) {
+      console.error('Error fetching the quotes:', error);
+      this.quotes = [];  // Set to an empty array on error
+    }
+  }
+
+  // Method to filter and return a random quote with the 'technology' tag
+  getRandomTechnologyQuote() {
+    const techQuotes = this.quotes.filter(quote => quote.tags.includes('Technology'));
+    if (techQuotes.length > 0) {
+      const randomIndex = Math.floor(Math.random() * techQuotes.length);
+      return techQuotes[randomIndex];
+    } else {
+      return null;
+    }
+  }
+
+  // Method to display the quote in the footer
+  displayQuote() {
+    const quoteFooter = document.getElementById(this.footerElementId);
+    const randomQuote = this.getRandomTechnologyQuote();
+    
+    if (randomQuote) {
+      quoteFooter.innerHTML = `"${randomQuote.content}" - ${randomQuote.author}`;
+    } else {
+      quoteFooter.innerHTML = "No quote available for the 'technology' tag.";
+    }
+  }
+
+  // Method to initialize the quote fetching and display process
+  async init() {
+    await this.loadQuotes();
+    this.displayQuote();
+  }
 }
 
-document.addEventListener("DOMContentLoaded", getRandomQuote);
+// Create an instance of the QuoteManager class and initialize it
+const quoteManager = new QuoteManager('theme/scripts/quotes.json', 'quote-footer');
+quoteManager.init();
+
 
 // To get random img from ninja images api=HPd1gvray3/8ErpM3z/suQ==bTKOEtJSENEZwgdc
-function fetchImage() {
-  fetch(
-    "https://api.api-ninjas.com/v1/randomimage?category=nature&width=340&height=200",
-    {
-      headers: {
-        "X-Api-Key": "HPd1gvray3/8ErpM3z/suQ==bTKOEtJSENEZwgdc",
-        Accept: "image/jpg",
-      },
-    }
-  )
-    .then((response) => response.blob())
-    .then((imageBlob) => {
-      document.getElementById("natureImage").src =
-        URL.createObjectURL(imageBlob);
-    })
-    .catch((error) => console.error("Error:", error));
-}
+// function fetchImage() {
+//   fetch(
+//     "https://api.api-ninjas.com/v1/randomimage?category=nature&width=340&height=200",
+//     {
+//       headers: {
+//         "X-Api-Key": "HPd1gvray3/8ErpM3z/suQ==bTKOEtJSENEZwgdc",
+//         Accept: "image/jpg",
+//       },
+//     }
+//   )
+//     .then((response) => response.blob())
+//     .then((imageBlob) => {
+//       document.getElementById("natureImage").src =
+//         URL.createObjectURL(imageBlob);
+//     })
+//     .catch((error) => console.error("Error:", error));
+// }
 
 // Fetch a new image 24 hour
-fetchImage();
-setInterval(fetchImage, 86400000);
+// fetchImage();
+// setInterval(fetchImage, 86400000);
 
-function initAnima(obj) {
-  (function ($) {
-    var animaTimeout = $.fn.getGlobalVar("animaTimeout");
-    var animaTimeout_2 = $.fn.getGlobalVar("animaTimeout_2");
-    var da = $(obj).attr("data-anima");
-    var an = $(obj).find(".anima,[data-anima]");
-    var t = $(obj).attr("data-time");
-    var ta = $(obj).attr("data-target");
-    var tm = $(obj).attr("data-timeline");
-    var tmt = $(obj).attr("data-timeline-time");
-    var tr = $(obj).attr("data-trigger");
-    var len = $(an).length;
-    var default_anima = $.fn.getGlobalVar("default_anima");
-    if (da == "default" && !isEmpty(default_anima)) da = default_anima;
-    if (isEmpty(tmt)) tmt = 500;
-    if (isEmpty(an)) an = obj;
-    $(an).each(function (i) {
-      if (!isEmpty($(this).attr("data-anima")) && i === 0) {
-        an = obj;
-        return false;
-      }
-    });
-    if (!isEmpty(ta)) an = $(ta);
-    if (isEmpty(t)) t = 500;
-    var time = 0,
-      p = 1;
-    if (!isEmpty(tm) && tm === "desc") {
-      time = (len - 1) * tmt;
-      p = -1;
-    }
-    var cont = null;
-    $(an).each(function (index) {
-      var time_now = time;
-      if (index === len - 1 && tm === "desc") time_now = 0;
-      if (!$(this).hasClass("anima") && an != obj && isEmpty(ta)) {
-        cont = this;
-      } else {
-        if ((cont != null && !$.contains(cont, this)) || cont === null) {
-          var tobj = this;
-          var pos = $(this).css("position");
-          if (pos != "absolute" && pos != "fixed")
-            $(this).css("position", "relative");
-          var aid = Math.random(5) + "";
-          $(tobj).attr("aid", aid);
-          if (animaTimeout.length > 30) {
-            animaTimeout.shift();
-            animaTimeout_2.shift();
-          }
-          animaTimeout.push([
-            aid,
-            setTimeout(function () {
-              $(tobj).css(cssInit(0, 0));
-              var da_ = da;
-              if (
-                !isEmpty($(tobj).attr("class")) &&
-                $(tobj).attr("class").indexOf("anima-") != -1
-              ) {
-                var arr_a = $(tobj).attr("class").split(" ");
-                for (var i = 0; i < arr_a.length; i++) {
-                  if (arr_a[i].indexOf("anima-") != -1)
-                    da_ = arr_a[i].replace("anima-", "");
-                }
-              }
-              if (
-                $(window).width() < 768 &&
-                (isEmpty(tr) || tr === "scroll" || tr === "load")
-              )
-                da_ = "fade-in";
-              animaTimeout_2.push([
-                aid,
-                setTimeout(function () {
-                  $(tobj).css(cssInit(0, t)).addClass(da_);
-                  $(tobj).css("opacity", "");
-                }, 100),
-              ]);
-            }, time_now),
-          ]);
-          if (!isEmpty(tm)) time += tmt * p;
-        }
-      }
-    });
-    $.fn.setGlobalVar(animaTimeout, "animaTimeout");
-    $.fn.setGlobalVar(animaTimeout_2, "animaTimeout_2");
-  })(jQuery);
-}
+// function initAnima(obj) {
+//   (function ($) {
+//     var animaTimeout = $.fn.getGlobalVar("animaTimeout");
+//     var animaTimeout_2 = $.fn.getGlobalVar("animaTimeout_2");
+//     var da = $(obj).attr("data-anima");
+//     var an = $(obj).find(".anima,[data-anima]");
+//     var t = $(obj).attr("data-time");
+//     var ta = $(obj).attr("data-target");
+//     var tm = $(obj).attr("data-timeline");
+//     var tmt = $(obj).attr("data-timeline-time");
+//     var tr = $(obj).attr("data-trigger");
+//     var len = $(an).length;
+//     var default_anima = $.fn.getGlobalVar("default_anima");
+//     if (da == "default" && !isEmpty(default_anima)) da = default_anima;
+//     if (isEmpty(tmt)) tmt = 500;
+//     if (isEmpty(an)) an = obj;
+//     $(an).each(function (i) {
+//       if (!isEmpty($(this).attr("data-anima")) && i === 0) {
+//         an = obj;
+//         return false;
+//       }
+//     });
+//     if (!isEmpty(ta)) an = $(ta);
+//     if (isEmpty(t)) t = 500;
+//     var time = 0,
+//       p = 1;
+//     if (!isEmpty(tm) && tm === "desc") {
+//       time = (len - 1) * tmt;
+//       p = -1;
+//     }
+//     var cont = null;
+//     $(an).each(function (index) {
+//       var time_now = time;
+//       if (index === len - 1 && tm === "desc") time_now = 0;
+//       if (!$(this).hasClass("anima") && an != obj && isEmpty(ta)) {
+//         cont = this;
+//       } else {
+//         if ((cont != null && !$.contains(cont, this)) || cont === null) {
+//           var tobj = this;
+//           var pos = $(this).css("position");
+//           if (pos != "absolute" && pos != "fixed")
+//             $(this).css("position", "relative");
+//           var aid = Math.random(5) + "";
+//           $(tobj).attr("aid", aid);
+//           if (animaTimeout.length > 30) {
+//             animaTimeout.shift();
+//             animaTimeout_2.shift();
+//           }
+//           animaTimeout.push([
+//             aid,
+//             setTimeout(function () {
+//               $(tobj).css(cssInit(0, 0));
+//               var da_ = da;
+//               if (
+//                 !isEmpty($(tobj).attr("class")) &&
+//                 $(tobj).attr("class").indexOf("anima-") != -1
+//               ) {
+//                 var arr_a = $(tobj).attr("class").split(" ");
+//                 for (var i = 0; i < arr_a.length; i++) {
+//                   if (arr_a[i].indexOf("anima-") != -1)
+//                     da_ = arr_a[i].replace("anima-", "");
+//                 }
+//               }
+//               if (
+//                 $(window).width() < 768 &&
+//                 (isEmpty(tr) || tr === "scroll" || tr === "load")
+//               )
+//                 da_ = "fade-in";
+//               animaTimeout_2.push([
+//                 aid,
+//                 setTimeout(function () {
+//                   $(tobj).css(cssInit(0, t)).addClass(da_);
+//                   $(tobj).css("opacity", "");
+//                 }, 100),
+//               ]);
+//             }, time_now),
+//           ]);
+//           if (!isEmpty(tm)) time += tmt * p;
+//         }
+//       }
+//     });
+//     $.fn.setGlobalVar(animaTimeout, "animaTimeout");
+//     $.fn.setGlobalVar(animaTimeout_2, "animaTimeout_2");
+//   })(jQuery);
+// }
 function outAnima(obj) {
   (function ($) {
     var animaTimeout = $.fn.getGlobalVar("animaTimeout");
