@@ -64,9 +64,20 @@
     </header>
     <main>
       <section class="section-base">
-
         <div class="container">
-          
+          <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+              <div class="cnt-box" style="padding: 40px; border: 2px solid #f0f0f0; border-radius: 8px;">
+                <h2 style="text-align: center; margin-bottom: 30px;">Random Reason to Say No</h2>
+                <div id="reason-container" style="min-height: 80px; display: flex; align-items: center; justify-content: center;">
+                  <p id="random-reason" style="font-size: 18px; line-height: 1.6; text-align: center; font-style: italic;">Loading reason...</p>
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                  <button class="btn btn-sm btn-border full-width-sm" onclick="getRandomReason()" class="btn btn-circle btn-border">Get Another Reason</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <!-- <section class="section-base">
@@ -169,7 +180,7 @@
       <div class="footer-bar">
         <div class="container">
           <span
-            >© 2024 Made with ❤️ by -
+            >© 2026 Made with ❤️ by -
             <a href="https://lakhanadewar.github.io/" target="_blank"
               >Lakhan Adewar</a
             ></span
@@ -184,6 +195,54 @@
         href="theme/media/icons/iconsmind/line-icons.min.css"
       />
       <script src="theme/scripts/parallax.min.js"></script>
+      <script>
+        // Store reasons in memory for quick access
+        let allReasons = [];
+
+        // Function to fetch and cache reasons from JSON
+        function loadReasons() {
+          return fetch('theme/scripts/reasons.json')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Failed to load reasons');
+              }
+              return response.json();
+            })
+            .then(data => {
+              allReasons = data;
+              return data;
+            })
+            .catch(error => {
+              console.error('Error loading reasons:', error);
+              allReasons = ['Unable to load reasons at this time. Please try again later.'];
+              return allReasons;
+            });
+        }
+
+        // Function to get a random reason
+        function getRandomReason() {
+          if (allReasons.length === 0) {
+            // If reasons not loaded yet, load them first
+            loadReasons().then(displayRandomReason);
+          } else {
+            displayRandomReason();
+          }
+        }
+
+        // Function to display a random reason
+        function displayRandomReason() {
+          if (allReasons.length > 0) {
+            const randomIndex = Math.floor(Math.random() * allReasons.length);
+            const randomReason = allReasons[randomIndex];
+            document.getElementById('random-reason').textContent = randomReason;
+          }
+        }
+
+        // Load reasons and display one when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+          loadReasons().then(displayRandomReason);
+        });
+      </script>
     </footer>
   </body>
 </html>
