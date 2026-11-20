@@ -11,6 +11,5 @@ All page content lives in [`js/content.js`](js/content.js): profile, CV, skills,
 - Profile photo: `images/profile.jpg`
 - Certificate badges: `images/certificates/`
 - Articles hosted on this site: `posts/`
-- Downloadable CV: `Lakhan_Adewar_CV.pdf`
 
 The previous version of the site is kept on the `old-portfolio` branch.

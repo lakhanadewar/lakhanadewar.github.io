@@ -41,7 +41,6 @@
     <div class="contact-grid">
       <div class="contact-intro">
         <p id="contact-copy"></p>
-        <a id="resume-link" class="btn btn-primary" href="#">Download CV</a>
       </div>
       <div id="contact-links" class="contact-links"></div>
     </div>
@@ -56,7 +55,6 @@
   <script src="js/interactive.js" defer></script>
   <script>
     document.getElementById("contact-copy").textContent = data.contact.copy;
-    document.getElementById("resume-link").href = data.contact.resumeUrl;
 
     document.getElementById("contact-links").innerHTML = data.contact.links
       .map(

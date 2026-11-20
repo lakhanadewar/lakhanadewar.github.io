@@ -483,7 +483,6 @@ window.PORTFOLIO_DATA = {
    */
   "contact": {
     "copy": "I'm open to QA automation and test engineering roles in London or remote, and I'm always happy to talk about test frameworks, CI pipelines or using AI in testing. The quickest way to reach me is email or LinkedIn.",
-    "resumeUrl": "Lakhan_Adewar_CV.pdf",
     "links": [
       { "label": "Email",    "faIcon": "fa-solid fa-envelope",     "value": "lakhanadewar@gmail.com",   "url": "mailto:lakhanadewar@gmail.com" },
       { "label": "LinkedIn", "faIcon": "fa-brands fa-linkedin-in", "value": "linkedin.com/in/lakhana",  "url": "https://www.linkedin.com/in/lakhana/" },

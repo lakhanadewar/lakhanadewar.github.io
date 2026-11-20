@@ -41,7 +41,6 @@
         <h1 class="page-title">Curriculum Vitae</h1>
         <p id="cv-page-desc" class="page-desc"></p>
       </div>
-      <a id="cv-download" class="btn btn-primary" href="#"><i class="fa-solid fa-download" aria-hidden="true"></i> Download PDF</a>
     </div>
 
     <!-- Main area + sticky TOC -->
@@ -249,8 +248,6 @@
     // Set professional summary
     document.getElementById("cv-summary-text").textContent = data.cv?.summary || "";
 
-    const dlBtn = document.getElementById("cv-download");
-    if (dlBtn && data.contact?.resumeUrl) dlBtn.href = data.contact.resumeUrl;
 
     initPage("CV");
     renderCVContact();
