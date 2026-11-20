@@ -66,7 +66,7 @@ window.PORTFOLIO_DATA = {
    * ─────────────────────────────────────────────────────────────────────────
    */
   "cv": {
-    "summary": "ISTQB-certified QA automation engineer with an M.Tech (Level 7) and more than four years of web, mobile and API test automation. I've built frameworks with Playwright, Selenium, Appium, REST Assured and PyTest across Java, TypeScript and Python, and run them in parallel through GitHub Actions and Jenkins. I cut regression runtime by 87% at Certa.ai, automated 90% of regression at Prodapt, and built GenAI QA tools with Claude and Playwright MCP that save around three hours of manual work a week. Prodapt recognised this work with Star of the Quarter and nine Spotlight Awards.",
+    "summary": "ISTQB-certified QA automation engineer with an M.Tech (Level 7) and more than four years of web, mobile and API test automation. I've built frameworks with Playwright, Selenium, Appium, REST Assured and PyTest across Java, TypeScript and Python, and run them in parallel through GitHub Actions and Jenkins. I cut regression runtime by 87% at Certa.ai with Python, PyTest and Selenium, automated 90% of regression at Prodapt, and built GenAI QA tools with Claude and Playwright MCP that save around three hours of manual work a week. Prodapt recognised this work with Star of the Quarter and nine Spotlight Awards.",
 
     // Spoken languages (empty list hides the section)
     "languages": [],
@@ -160,14 +160,14 @@ window.PORTFOLIO_DATA = {
       "period": "Jan 2026 – Aug 2026",
       "role": "QA Engineer",
       "company": "Certa.ai",
-      "summary": "End-to-end QA on the product, from test planning and in-sprint validation through regression, sanity and UAT, across UI, API and database flows.",
+      "summary": "End-to-end QA on the product, from test planning and in-sprint validation through regression, sanity and UAT, across UI, API and database flows. I automated in two stacks: Python with PyTest and Selenium, and Playwright with TypeScript.",
       "highlights": [
-        "Cut regression execution time by 87% by building a modular automation framework with the Page Object Model, sharded and run in parallel through GitHub Actions.",
+        "Cut regression execution time by 87% by building a modular Selenium framework in Python and PyTest with fixtures and the Page Object Model, run in parallel through GitHub Actions.",
         "Designed functional and regression tests with boundary value analysis, equivalence partitioning, decision tables and state transition, holding production defect leakage under 1% and managing the full defect lifecycle in Jira.",
-        "Built API tests that validate status codes, JSON schemas and payloads, backed by SQL checks on the database for data integrity.",
-        "Turned manual test cases into automated scripts with Claude Projects and Playwright MCP, making scripting 10× faster, and rolled the workflow out to a 10-person team.",
-        "Built reusable GenAI utilities that analyse Postman API collections and generate reports, cutting analysis time by 96% and speeding up defect resolution.",
-        "Maintained a 200+ case automation suite with HTML and Allure reports."
+        "Built API tests in PyTest and in Playwright that validate status codes, JSON schemas and payloads, backed by SQL checks on the database for data integrity.",
+        "Turned manual test cases into Playwright and TypeScript scripts with Claude Projects and Playwright MCP, making scripting 10× faster, and rolled the workflow out to a 10-person team.",
+        "Built reusable Python GenAI utilities that analyse Postman API collections and generate reports, cutting analysis time by 96% and speeding up defect resolution.",
+        "Maintained a 200+ case Playwright and TypeScript suite with trace viewer and HTML reports."
       ]
     },
     {
