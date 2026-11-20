@@ -137,7 +137,9 @@ window.PORTFOLIO_DATA = {
     "Performance Testing",
     "Test Strategy & Planning",
     "Defect Analysis & Reporting",
-    "Agile / Scrum"
+    "Agile / Scrum",
+    "Technical Support",
+    "Programme Coordination"
   ],
 
   /**
@@ -185,6 +187,20 @@ window.PORTFOLIO_DATA = {
         "Introduced API testing with REST Assured and JMeter performance testing, with Jenkins CI builds for every release.",
         "Kept defect rejection below 5% by standardising bug reports with clear reproduction steps, and used Zephyr for test management and traceability.",
         "Led Brightspeed automation UAT and delivered client demos under pressure."
+      ]
+    },
+    {
+      "type": "work",
+      "period": "2020 – 2021",
+      "role": "Technical Support Volunteer",
+      "company": "IRADA Foundation & SAFAL Foundation",
+      "summary": "Volunteered during lockdown, running the technical side of online education programmes: two one-month courses and a four-month programme.",
+      "highlights": [
+        "Scheduled daily classes and meetings for trainers and students.",
+        "Managed student registration, exams, results and certification.",
+        "Handled student communication and resolved technical issues.",
+        "Organised course files, shared drives and digital records.",
+        "Trained team members to use online tools with confidence."
       ]
     },
     {
