@@ -112,7 +112,7 @@
                 </div>
               ` : ''}
               <div class="project-card__content">
-                <span class="project-card__year">${project.year}</span>
+                ${project.year ? `<span class="project-card__year">${project.year}</span>` : ""}
                 <h3 class="project-card__title">${project.title}</h3>
                 <p class="project-card__summary">${project.summary}</p>
                 ${project.impact ? `<p class="project-card__impact"><i class="fa-solid fa-bolt fa-sm" aria-hidden="true"></i> ${project.impact}</p>` : ''}

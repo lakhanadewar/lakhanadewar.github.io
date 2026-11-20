@@ -244,7 +244,6 @@ window.PORTFOLIO_DATA = {
   "projects": [
     {
       "title": "Hybrid BDD Test Automation Framework",
-      "year": "2026",
       "summary": "One set of Gherkin scenarios that tests a full-stack web app from three angles: its REST API, desktop Chrome and mobile Chrome. Built for a real farm-tools app with weather, news, irrigation planning, fuel prices and accounts.",
       "impact": "Around 200 scenarios across API, desktop and mobile web, type-checked and dry-run on every push.",
       "stack": ["TypeScript", "Playwright", "Cucumber.js", "Node.js", "Allure", "GitHub Actions"],
@@ -262,7 +261,6 @@ window.PORTFOLIO_DATA = {
     },
     {
       "title": "TestKart Selenium Framework",
-      "year": "2026",
       "summary": "A Java UI automation framework for TestKart, a small e-commerce app, covering sign-up, login, sessions, catalogue, cart, coupons, checkout, mock payments and order history.",
       "impact": "71 test cases, run as 213 parallel cross-browser runs on Chrome, Firefox and Edge.",
       "stack": ["Java", "Selenium", "TestNG", "Maven", "Apache POI", "Docker", "Jenkins"],
@@ -279,7 +277,6 @@ window.PORTFOLIO_DATA = {
     },
     {
       "title": "Appium Cross-Platform Mobile Framework",
-      "year": "2026",
       "summary": "Mobile automation in Java and TestNG that runs the same tests on a local emulator or on real devices in BrowserStack, and can also be driven conversationally through Appium MCP.",
       "stack": ["Java", "Appium", "TestNG", "Maven", "BrowserStack", "Appium MCP"],
       "details": [
@@ -294,7 +291,6 @@ window.PORTFOLIO_DATA = {
     },
     {
       "title": "Appium PyTest Mobile Framework",
-      "year": "2026",
       "summary": "A Python companion to the Java mobile framework, built on PyTest with a single driver factory for Android and iOS.",
       "stack": ["Python", "Appium", "PyTest"],
       "details": [
