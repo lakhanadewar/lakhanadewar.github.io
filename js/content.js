@@ -31,11 +31,12 @@ window.PORTFOLIO_DATA = {
     "social": [
       { "label": "GitHub",   "url": "https://github.com/lakhanadewar",        "icon": "fa-brands fa-github" },
       { "label": "LinkedIn", "url": "https://www.linkedin.com/in/lakhana/",   "icon": "fa-brands fa-linkedin-in" },
+      { "label": "Medium",   "url": "https://medium.com/@lakhanadewar",       "icon": "fa-brands fa-medium" },
       { "label": "Email",    "url": "mailto:lakhanadewar@gmail.com",          "icon": "fa-solid fa-envelope" }
     ],
 
     // Set to "https://YOUR-USERNAME.medium.com/feed" to pull in Medium posts, or null to disable
-    "mediumFeedUrl": null,
+    "mediumFeedUrl": "https://medium.com/@lakhanadewar/feed",
 
     "about": "I'm a QA automation engineer based in London with more than four years of testing web, mobile and API products. Most of that time was at Prodapt, where I built and ran regression automation for telecom and mobile money products, including M-Pesa for Vodafone and Safaricom. In 2026 I joined Certa.ai as a QA engineer, and I'm now the sole developer and tester on agriengg.tech. I write automation in Java, TypeScript and Python, so I can fit in with whatever stack a team already uses. Playwright, Selenium, Appium, REST Assured, PyTest and Cucumber are my everyday tools. What I care about most is fast, trustworthy feedback: suites that run in parallel in CI on every change, and defect reports a developer can reproduce first time. Lately I've been putting GenAI to work in testing, turning manual cases into Playwright scripts with Claude and Playwright MCP, drafting edge cases and bug reports, and driving mobile apps through Appium and Maestro MCP.",
 
@@ -111,6 +112,7 @@ window.PORTFOLIO_DATA = {
     "SQL",
     "Playwright",
     "Selenium WebDriver",
+    "CodeceptJS",
     "Appium",
     "Cucumber / BDD",
     "TestNG",
@@ -424,7 +426,7 @@ window.PORTFOLIO_DATA = {
       { "label": "Email",    "faIcon": "fa-solid fa-envelope",     "value": "lakhanadewar@gmail.com",   "url": "mailto:lakhanadewar@gmail.com" },
       { "label": "LinkedIn", "faIcon": "fa-brands fa-linkedin-in", "value": "linkedin.com/in/lakhana",  "url": "https://www.linkedin.com/in/lakhana/" },
       { "label": "GitHub",   "faIcon": "fa-brands fa-github",      "value": "github.com/lakhanadewar",  "url": "https://github.com/lakhanadewar" },
-      { "label": "Writing",  "faIcon": "fa-solid fa-pen-nib",      "value": "Read my articles",         "url": "blog.html" }
+      { "label": "Medium",   "faIcon": "fa-brands fa-medium",      "value": "medium.com/@lakhanadewar", "url": "https://medium.com/@lakhanadewar" }
     ]
   },
 
