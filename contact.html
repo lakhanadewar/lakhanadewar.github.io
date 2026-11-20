@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with Lakhan Adewar, QA automation engineer in London.">
+  <title>Lakhan Adewar | Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@400;500;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────────────── -->
+  <header class="navbar" role="banner">
+    <div class="navbar__inner">
+      <a class="navbar__brand" id="brand-name" href="index.html">Lakhan Adewar</a>
+      <nav aria-label="Primary navigation">
+        <ul id="nav-links" class="navbar__links" role="list"></ul>
+      </nav>
+      <div class="navbar__controls">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+        <button class="navbar__hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" type="button">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-hero reveal">
+      <h1 class="page-title">Contact</h1>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-intro">
+        <p id="contact-copy"></p>
+        <a id="resume-link" class="btn btn-primary" href="#">Download CV</a>
+      </div>
+      <div id="contact-links" class="contact-links"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="footer-year"></span> <span id="footer-name"></span>. built using <code><a href="https://github.com/ursmaheshj/mj-folio" target="_blank" rel="noopener noreferrer">mj-folio</a></code>.</p>
+  </footer>
+
+  <script src="js/content.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/interactive.js" defer></script>
+  <script>
+    document.getElementById("contact-copy").textContent = data.contact.copy;
+    document.getElementById("resume-link").href = data.contact.resumeUrl;
+
+    document.getElementById("contact-links").innerHTML = data.contact.links
+      .map(
+        (link) => `
+          <a class="contact-link" href="${link.url}">
+            <span class="contact-link__label">${link.faIcon ? `<i class="${link.faIcon}" aria-hidden="true"></i> ` : ""}${link.label}</span>
+            <span class="contact-link__value">${link.value}</span>
+          </a>`
+      )
+      .join("");
+
+    initPage("Contact");
+    setupReveal();
+  </script>
+</body>
+</html>

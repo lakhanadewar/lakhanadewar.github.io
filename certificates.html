@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Certifications and courses completed by Lakhan Adewar, including ISTQB CTFL v4.0.">
+  <title>Lakhan Adewar | Certificates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@400;500;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────────────── -->
+  <header class="navbar" role="banner">
+    <div class="navbar__inner">
+      <a class="navbar__brand" id="brand-name" href="index.html">Lakhan Adewar</a>
+      <nav aria-label="Primary navigation">
+        <ul id="nav-links" class="navbar__links" role="list"></ul>
+      </nav>
+      <div class="navbar__controls">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+        <button class="navbar__hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" type="button">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-hero reveal">
+      <h1 class="page-title">Certificates</h1>
+      <p class="page-desc">ISTQB certification and the courses I&#39;ve completed in automation, CI/CD and AI. Filter by topic below.</p>
+    </div>
+
+    <div id="cert-filters" class="filter-bar" role="tablist" aria-label="Filter by keyword"></div>
+    <div id="cert-grid" class="cert-grid"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="footer-year"></span> <span id="footer-name"></span>. built using <code><a href="https://github.com/ursmaheshj/mj-folio" target="_blank" rel="noopener noreferrer">mj-folio</a></code>.</p>
+  </footer>
+
+  <script src="js/content.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/interactive.js" defer></script>
+  <script>
+    // ─── Certificates Page ──────────────────────────────────────────────────
+    // Note: data is already declared in shared.js as window.PORTFOLIO_DATA
+
+    // Debug: Check if certificates exist
+    console.log("Certificates loaded:", data.certificates ? data.certificates.length : 0);
+
+    // Initialize page
+    initPage("Certificates");
+
+    // Get all unique keywords
+    function getAllKeywords() {
+      const allKeywords = new Set();
+      (data.certificates || []).forEach(cert => {
+        (cert.keywords || []).forEach(kw => allKeywords.add(kw));
+      });
+      return ["All", ...Array.from(allKeywords).sort()];
+    }
+
+    // Render filter pills
+    function renderFilters() {
+      const keywords = getAllKeywords();
+      const filterEl = document.getElementById("cert-filters");
+      
+      if (!keywords || keywords.length <= 1) {
+        filterEl.innerHTML = '<p class="blog-status">No certificate keywords found. Check your data in js/content.js</p>';
+        return;
+      }
+      
+      filterEl.innerHTML = keywords
+        .map((kw, i) => `
+          <button
+            class="filter-pill ${i === 0 ? "is-active" : ""}"
+            data-keyword="${kw}"
+            role="tab"
+            aria-selected="${i === 0}"
+          >${kw}</button>
+        `)
+        .join("");
+
+      // Bind click handlers
+      filterEl.querySelectorAll(".filter-pill").forEach(btn => {
+        btn.addEventListener("click", () => {
+          filterEl.querySelectorAll(".filter-pill").forEach(b => {
+            b.classList.remove("is-active");
+            b.setAttribute("aria-selected", "false");
+          });
+          btn.classList.add("is-active");
+          btn.setAttribute("aria-selected", "true");
+          renderCertificates(btn.dataset.keyword);
+        });
+      });
+    }
+
+    // Render certificates
+    function renderCertificates(filterKeyword = "All") {
+      const gridEl = document.getElementById("cert-grid");
+      const certs = data.certificates || [];
+
+      if (certs.length === 0) {
+        gridEl.innerHTML = `<p class="blog-status">No certificates found. Add certificates to the "certificates" array in js/content.js</p>`;
+        return;
+      }
+
+      const filtered = filterKeyword === "All" 
+        ? certs 
+        : certs.filter(c => (c.keywords || []).includes(filterKeyword));
+
+      if (!filtered.length) {
+        gridEl.innerHTML = `<p class="blog-status">No certificates found for "${filterKeyword}"</p>`;
+        return;
+      }
+
+      gridEl.innerHTML = filtered
+        .map(cert => `
+          <article class="cert-card reveal">
+            <div class="cert-card__image-wrap">
+              <a href="${cert.credentialUrl}" target="_blank" rel="noopener noreferrer" aria-label="View certificate">
+                <img 
+                  src="${cert.imageUrl}" 
+                  alt="${cert.title} certificate"
+                  class="cert-card__image"
+                  loading="lazy"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <div class="cert-card__placeholder" style="display:none;">Certificate Image<br/>Not Available</div>
+              </a>
+            </div>
+            <div class="cert-card__content">
+              <div class="cert-card__meta">
+                <span class="cert-card__issuer">${cert.issuer}</span>
+                <span class="cert-card__date">${cert.date}</span>
+              </div>
+              <h3 class="cert-card__title">
+                <a href="${cert.credentialUrl}" target="_blank" rel="noopener noreferrer">
+                  ${cert.title}
+                </a>
+              </h3>
+              ${cert.credentialId ? `<p class="cert-card__id">ID: ${cert.credentialId}</p>` : ""}
+              <div class="cert-card__keywords">
+                ${(cert.keywords || []).map(kw => `<span class="tag">${kw}</span>`).join("")}
+              </div>
+              <div class="cert-card__actions">
+                <a href="${cert.credentialUrl}" class="btn btn-outline btn-sm" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-solid fa-award" aria-hidden="true"></i>
+                  View Certificate
+                </a>
+              </div>
+            </div>
+          </article>
+        `)
+        .join("");
+
+      setupReveal();
+    }
+
+    // Initialize filters and certificates
+    try {
+      renderFilters();
+      renderCertificates();
+    } catch (error) {
+      console.error("Error rendering certificates:", error);
+      document.getElementById("cert-grid").innerHTML = `<p class="blog-status">Error loading certificates. Check browser console for details.</p>`;
+    }
+  </script>
+</body>
+</html>

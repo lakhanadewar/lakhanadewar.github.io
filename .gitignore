@@ -1,0 +1,57 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Editor/IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Temporary Files
+*.tmp
+*.temp
+*.log
+changed_images.txt
+urls.txt
+image_paths.txt
+broken_urls.txt
+missing_images.txt
+savings.md
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Lighthouse CI
+.lighthouseci/
+lhci-reports/
+
+# Node modules (for minification tools if run locally)
+node_modules/
+
+# Optional: Uncomment to exclude compressed files from git (if hosting handles compression)
+# *.gz
+# *.br
+# *.min.js
+# *.min.css
+
+# Optional: Uncomment to exclude images if they're large
+# images/*.jpg
+# images/*.png
+# !images/.gitkeep

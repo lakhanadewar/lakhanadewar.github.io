@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Test automation frameworks built by Lakhan Adewar with Playwright, Selenium and Appium.">
+  <title>Lakhan Adewar | Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@400;500;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────────────── -->
+  <header class="navbar" role="banner">
+    <div class="navbar__inner">
+      <a class="navbar__brand" id="brand-name" href="index.html">Lakhan Adewar</a>
+      <nav aria-label="Primary navigation">
+        <ul id="nav-links" class="navbar__links" role="list"></ul>
+      </nav>
+      <div class="navbar__controls">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+        <button class="navbar__hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" type="button">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-hero reveal">
+      <h1 class="page-title">Projects</h1>
+      <p class="page-desc">Test automation frameworks for web, mobile and API, each with its code on GitHub. Filter by technology below.</p>
+    </div>
+
+    <div id="project-filters" class="filter-bar" role="tablist" aria-label="Filter by technology"></div>
+    <div id="project-grid" class="project-grid"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="footer-year"></span> <span id="footer-name"></span>. built using <code><a href="https://github.com/ursmaheshj/mj-folio" target="_blank" rel="noopener noreferrer">mj-folio</a></code>.</p>
+  </footer>
+
+  <script src="js/content.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/interactive.js" defer></script>
+  <script>
+    const projectState = { filter: "All" };
+
+    // Get all unique technologies from project stacks
+    function getProjectTechnologies() {
+      const allTech = new Set();
+      data.projects.forEach(p => {
+        (p.stack || []).forEach(tech => allTech.add(tech));
+      });
+      return ["All", ...Array.from(allTech).sort()];
+    }
+
+    function renderProjectFilters() {
+      document.getElementById("project-filters").innerHTML = getProjectTechnologies()
+        .map(
+          (tech) =>
+            `<button class="filter-pill${tech === projectState.filter ? " is-active" : ""}" data-project-filter="${tech}" type="button">${tech}</button>`
+        )
+        .join("");
+    }
+
+    function renderProjects() {
+      const filtered =
+        projectState.filter === "All"
+          ? data.projects
+          : data.projects.filter((p) => (p.stack || []).includes(projectState.filter));
+
+      document.getElementById("project-grid").innerHTML = filtered
+        .map((project, index) => {
+          const hasImages = project.images && project.images.length > 0;
+          const hasMultipleImages = hasImages && project.images.length > 1;
+          
+          return `
+            <article class="project-card reveal">
+              ${hasImages ? `
+                <div class="project-card__image-slider" data-project-id="${index}">
+                  <div class="project-card__images">
+                    ${project.images.map((img, imgIndex) => `
+                      <img 
+                        src="${img}" 
+                        alt="${project.title} - Image ${imgIndex + 1}"
+                        class="project-card__image ${imgIndex === 0 ? 'is-active' : ''}"
+                        loading="lazy"
+                      />
+                    `).join('')}
+                  </div>
+                  ${hasMultipleImages ? `
+                    <button class="project-slider__btn project-slider__btn--prev" data-action="prev" aria-label="Previous image">
+                      <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="project-slider__btn project-slider__btn--next" data-action="next" aria-label="Next image">
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <div class="project-slider__dots">
+                      ${project.images.map((_, dotIndex) => `
+                        <button class="project-slider__dot ${dotIndex === 0 ? 'is-active' : ''}" data-index="${dotIndex}" aria-label="Go to image ${dotIndex + 1}"></button>
+                      `).join('')}
+                    </div>
+                  ` : ''}
+                </div>
+              ` : ''}
+              <div class="project-card__content">
+                <span class="project-card__year">${project.year}</span>
+                <h3 class="project-card__title">${project.title}</h3>
+                <p class="project-card__summary">${project.summary}</p>
+                ${project.impact ? `<p class="project-card__impact"><i class="fa-solid fa-bolt fa-sm" aria-hidden="true"></i> ${project.impact}</p>` : ''}
+                ${project.details ? `
+                  <ul class="project-card__details">
+                    ${project.details.map(detail => `<li>${detail}</li>`).join('')}
+                  </ul>
+                ` : ''}
+                <div class="project-card__stack">
+                  ${project.stack.map((s) => `<span class="tag">${s}</span>`).join("")}
+                </div>
+                <div class="project-card__links">
+                  ${project.links.map((l) => `<a class="btn btn-outline btn-sm" href="${l.url}"><i class="fa-solid fa-arrow-up-right-from-square fa-sm" aria-hidden="true"></i> ${l.label}</a>`).join("")}
+                </div>
+              </div>
+            </article>`;
+        })
+        .join("");
+      setupReveal();
+      initializeProjectSliders();
+    }
+
+    // Image slider functionality
+    function initializeProjectSliders() {
+      document.querySelectorAll('.project-card__image-slider').forEach(slider => {
+        const images = slider.querySelectorAll('.project-card__image');
+        const dots = slider.querySelectorAll('.project-slider__dot');
+        let currentIndex = 0;
+
+        const showImage = (index) => {
+          images.forEach((img, i) => {
+            img.classList.toggle('is-active', i === index);
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('is-active', i === index);
+          });
+          currentIndex = index;
+        };
+
+        slider.addEventListener('click', (e) => {
+          const btn = e.target.closest('[data-action]');
+          const dot = e.target.closest('[data-index]');
+          
+          if (btn) {
+            e.preventDefault();
+            const action = btn.dataset.action;
+            if (action === 'prev') {
+              const newIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
+              showImage(newIndex);
+            } else if (action === 'next') {
+              const newIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0;
+              showImage(newIndex);
+            }
+          }
+          
+          if (dot) {
+            e.preventDefault();
+            showImage(parseInt(dot.dataset.index));
+          }
+        });
+      });
+    }
+
+    document.addEventListener("click", (e) => {
+      const pf = e.target.closest("[data-project-filter]");
+      if (pf) {
+        projectState.filter = pf.dataset.projectFilter;
+        renderProjectFilters();
+        renderProjects();
+      }
+    });
+
+    initPage("Projects");
+    renderProjectFilters();
+    renderProjects();
+    setupReveal();
+  </script>
+</body>
+</html>

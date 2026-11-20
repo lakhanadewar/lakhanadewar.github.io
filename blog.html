@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Articles by Lakhan Adewar on software testing, test automation and tooling.">
+  <title>Lakhan Adewar | Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@400;500;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────────────── -->
+  <header class="navbar" role="banner">
+    <div class="navbar__inner">
+      <a class="navbar__brand" id="brand-name" href="index.html">Lakhan Adewar</a>
+      <nav aria-label="Primary navigation">
+        <ul id="nav-links" class="navbar__links" role="list"></ul>
+      </nav>
+      <div class="navbar__controls">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+        <button class="navbar__hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" type="button">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-hero reveal">
+      <h1 class="page-title">Blog</h1>
+      <p class="page-desc">Notes on software testing, automation and the tools I use.</p>
+    </div>
+
+    <div id="blog-filters" class="filter-bar" role="tablist" aria-label="Filter by platform"></div>
+    <div id="blog-status" class="blog-status" hidden></div>
+    <div id="blog-grid" class="blog-grid"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="footer-year"></span> <span id="footer-name"></span>. built using <code><a href="https://github.com/ursmaheshj/mj-folio" target="_blank" rel="noopener noreferrer">mj-folio</a></code>.</p>
+  </footer>
+
+  <script src="js/content.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/interactive.js" defer></script>
+  <script>
+    const blogState = { filter: "All" };
+
+    // ── Extract a plain-text excerpt from HTML string ──────
+    function htmlToExcerpt(html, maxLen) {
+      const tmp = document.createElement("div");
+      tmp.innerHTML = html;
+      // Remove figure/image elements (common at top of Medium posts)
+      tmp.querySelectorAll("figure, img, h3, h4").forEach((el) => el.remove());
+      const text = (tmp.textContent || "").replace(/\s+/g, " ").trim();
+      return text.length > maxLen ? text.slice(0, maxLen).replace(/\s+\S*$/, "") + "…" : text;
+    }
+
+    // ── Fetch Medium posts via rss2json ────────────────────
+    // rss2json converts the Medium RSS feed to JSON (handles CORS)
+    async function fetchMediumPosts() {
+      const feedUrl = data.profile.mediumFeedUrl;
+      if (!feedUrl) return [];
+      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+      const res = await fetch(apiUrl);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      if (json.status !== "ok") throw new Error(json.message || "Feed error");
+      return json.items.map((item) => ({
+        title: item.title,
+        platform: "Medium",
+        date: new Date(item.pubDate).toLocaleDateString("en-US", { month: "short", year: "numeric" }),
+        excerpt: htmlToExcerpt(item.description || item.content || "", 180),
+        url: item.link,
+        thumbnail: item.thumbnail || null
+      }));
+    }
+
+    // ── Blog render helpers ────────────────────────────────
+    function getPlatforms(posts) {
+      return ["All", ...new Set(posts.map((b) => b.platform))];
+    }
+
+    function renderBlogFilters(posts) {
+      document.getElementById("blog-filters").innerHTML = getPlatforms(posts)
+        .map(
+          (plat) =>
+            `<button class="filter-pill${plat === blogState.filter ? " is-active" : ""}" data-blog-filter="${plat}" type="button">${plat}</button>`
+        )
+        .join("");
+    }
+
+    function renderBlogs(posts) {
+      const filtered =
+        blogState.filter === "All"
+          ? posts
+          : posts.filter((b) => b.platform === blogState.filter);
+
+      document.getElementById("blog-grid").innerHTML = filtered
+        .map(
+          (blog) => `
+            <article class="blog-card reveal${blog.thumbnail ? " blog-card--thumb" : ""}">
+              ${blog.thumbnail ? `<div class="blog-card__thumb"><img src="${blog.thumbnail}" alt="" loading="lazy"></div>` : ""}
+              <div class="blog-card__body">
+                <div class="blog-card__meta">
+                  <span class="blog-platform">${blog.platform}</span>
+                  <span class="blog-date">${blog.date}</span>
+                </div>
+                <h3 class="blog-card__title">${blog.title}</h3>
+                <p class="blog-card__excerpt">${blog.excerpt}</p>
+                <a class="text-link" href="${blog.url}" target="_blank" rel="noopener noreferrer">Read article <i class="fa-solid fa-arrow-right fa-xs" aria-hidden="true"></i></a>
+              </div>
+            </article>`
+        )
+        .join("");
+      setupReveal();
+    }
+
+    function setStatus(msg) {
+      const el = document.getElementById("blog-status");
+      if (msg) { el.textContent = msg; el.hidden = false; }
+      else      { el.hidden = true; }
+    }
+
+    // ── Main init ─────────────────────────────────────────
+    document.addEventListener("click", (e) => {
+      const bf = e.target.closest("[data-blog-filter]");
+      if (bf) {
+        blogState.filter = bf.dataset.blogFilter;
+        // re-render with whatever allPosts is at that moment
+        renderBlogFilters(window._allPosts);
+        renderBlogs(window._allPosts);
+      }
+    });
+
+    initPage("Blog");
+
+    // Start: show static non-Medium posts while fetching
+    const staticNonMedium = (data.blogs || []).filter((b) => b.platform !== "Medium");
+    window._allPosts = staticNonMedium;
+    setStatus("Fetching posts from Medium…");
+    renderBlogFilters(window._allPosts);
+    renderBlogs(window._allPosts);
+    setupReveal();
+
+    // Fetch live Medium posts, then merge
+    fetchMediumPosts()
+      .then((mediumPosts) => {
+        setStatus(null);
+        window._allPosts = [...mediumPosts, ...staticNonMedium];
+        renderBlogFilters(window._allPosts);
+        renderBlogs(window._allPosts);
+      })
+      .catch(() => {
+        // Fall back to all static posts (including static Medium entries)
+        setStatus(null);
+        window._allPosts = data.blogs || [];
+        renderBlogFilters(window._allPosts);
+        renderBlogs(window._allPosts);
+      });
+  </script>
+</body>
+</html>

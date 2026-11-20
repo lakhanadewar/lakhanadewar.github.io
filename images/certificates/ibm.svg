@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="IBM SkillsBuild">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f62fe"/><stop offset="1" stop-color="#7209b7"/></linearGradient></defs>
+<rect width="640" height="400" fill="url(#g)"/>
+<circle cx="320" cy="150" r="58" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="6"/>
+<path d="M292 150l20 20 38-40" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="320" y="270" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#fff">IBM</text>
+<text x="320" y="318" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#fff" fill-opacity=".85">SkillsBuild</text>
+</svg>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Curriculum vitae of Lakhan Adewar, QA automation engineer.">
+  <title>Lakhan Adewar | CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@400;500;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────────────── -->
+  <header class="navbar" role="banner">
+    <div class="navbar__inner">
+      <a class="navbar__brand" id="brand-name" href="index.html">Lakhan Adewar</a>
+      <nav aria-label="Primary navigation">
+        <ul id="nav-links" class="navbar__links" role="list"></ul>
+      </nav>
+      <div class="navbar__controls">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+        <button class="navbar__hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" type="button">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- CV title row -->
+    <div class="cv-page-header reveal">
+      <div>
+        <h1 class="page-title">Curriculum Vitae</h1>
+        <p id="cv-page-desc" class="page-desc"></p>
+      </div>
+      <a id="cv-download" class="btn btn-primary" href="#"><i class="fa-solid fa-download" aria-hidden="true"></i> Download PDF</a>
+    </div>
+
+    <!-- Main area + sticky TOC -->
+    <div class="cv-page-wrap">
+
+      <div class="cv-main" id="cv-main">
+
+        <!-- Contact -->
+        <section class="cv-section reveal" id="cv-contact">
+          <h2 class="cv-section-title"><i class="fa-solid fa-address-card" aria-hidden="true"></i> Contact Information</h2>
+          <div id="cv-contact-grid" class="cv-contact-grid"></div>
+        </section>
+
+        <!-- Summary -->
+        <section class="cv-section reveal" id="cv-summary">
+          <h2 class="cv-section-title"><i class="fa-solid fa-user" aria-hidden="true"></i> Professional Summary</h2>
+          <p id="cv-summary-text" class="cv-summary-text"></p>
+        </section>
+
+        <!-- Experience -->
+        <section class="cv-section reveal" id="cv-experience-sec">
+          <h2 class="cv-section-title"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> Experience</h2>
+          <div id="cv-experience-list" class="cv-entries-list"></div>
+        </section>
+
+        <!-- Education -->
+        <section class="cv-section reveal" id="cv-education-sec">
+          <h2 class="cv-section-title"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Education &amp; Certifications</h2>
+          <div id="cv-education-list" class="cv-entries-list"></div>
+        </section>
+
+        <!-- Skills -->
+        <section class="cv-section reveal" id="cv-skills-sec">
+          <h2 class="cv-section-title"><i class="fa-solid fa-wrench" aria-hidden="true"></i> Skills</h2>
+          <div id="skills-grid" class="skills-grid"></div>
+        </section>
+
+        <!-- Languages -->
+        <section class="cv-section reveal" id="cv-languages-sec">
+          <h2 class="cv-section-title"><i class="fa-solid fa-language" aria-hidden="true"></i> Languages</h2>
+          <div id="cv-languages-list" class="cv-languages-list"></div>
+        </section>
+
+        <!-- Achievements -->
+        <section class="cv-section reveal" id="cv-achievements-sec">
+          <h2 class="cv-section-title"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Achievements</h2>
+          <div id="cv-achievements-list" class="cv-entries-list"></div>
+        </section>
+
+      </div><!-- /.cv-main -->
+
+      <!-- Right TOC -->
+      <nav class="cv-toc" id="cv-toc" aria-label="CV sections">
+        <ul id="cv-toc-list"></ul>
+      </nav>
+
+    </div><!-- /.cv-page-wrap -->
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="footer-year"></span> <span id="footer-name"></span>. built using <code><a href="https://github.com/ursmaheshj/mj-folio" target="_blank" rel="noopener noreferrer">mj-folio</a></code>.</p>
+  </footer>
+
+  <script src="js/content.js"></script>
+  <script src="js/shared.js"></script>
+  <script src="js/interactive.js" defer></script>
+  <script>
+
+    // ── Contact section ────────────────────────────────────
+    // CV contact shows only professional info: Name, Title, Email, Location
+    // Social links (GitHub, LinkedIn) are excluded from CV
+    function renderCVContact() {
+      const emailLink = (data.contact.links || []).find((l) => l.label === "Email");
+      const rows = [
+        { label: "Name",     value: data.profile.name },
+        { label: "Professional Title",    value: data.profile.role },
+        emailLink
+          ? { label: "Email", value: emailLink.value, url: emailLink.url }
+          : null,
+        ...(data.profile.address || []).map((line, i) => ({ label: i === 0 ? "Location" : "", value: line }))
+        // Social links removed from CV - they appear on Contact page instead
+      ].filter(Boolean);
+
+      document.getElementById("cv-contact-grid").innerHTML = rows
+        .map(
+          (row) => `
+          <div class="cv-contact-row">
+            <span class="cv-contact-label">${row.label}</span>
+            <span class="cv-contact-value">${
+              row.url
+                ? `<a href="${row.url}" target="_blank" rel="noopener noreferrer">${row.value}</a>`
+                : row.value
+            }</span>
+          </div>`
+        )
+        .join("");
+    }
+
+    // ── Entry template ─────────────────────────────────────
+    function cvEntryHTML(item) {
+      const highlightList =
+        item.highlights && item.highlights.length
+          ? `<ul class="cv-entry-v2__highlights">${item.highlights.map((h) => `<li>${h}</li>`).join("")}</ul>`
+          : "";
+      return `
+        <div class="cv-entry-v2">
+          <div class="cv-entry-v2__date">${item.period}</div>
+          <div class="cv-entry-v2__content">
+            <p class="cv-entry-v2__role">${item.role}</p>
+            <p class="cv-entry-v2__org">${item.company}</p>
+            ${item.summary ? `<p class="cv-entry-v2__summary">${item.summary}</p>` : ""}
+            ${highlightList}
+          </div>
+        </div>`;
+    }
+
+    // ── Experience & Education ─────────────────────────────
+    function renderCVSections() {
+      const expEntries = data.experience.filter((e) => e.type !== "education");
+      document.getElementById("cv-experience-list").innerHTML = expEntries.map(cvEntryHTML).join("");
+
+      const eduEntries = data.experience.filter((e) => e.type === "education");
+      document.getElementById("cv-education-list").innerHTML = eduEntries.map(cvEntryHTML).join("");
+    }
+
+    // ── Skills Pills ────────────────────────────────────────
+    function renderSkills() {
+      document.getElementById("skills-grid").innerHTML = data.skills
+        .map((skill) => `<span class="skill-pill">${skill}</span>`)
+        .join("");
+    }
+
+    // ── Languages ──────────────────────────────────────────
+    function renderLanguages() {
+      if (!data.cv?.languages || data.cv.languages.length === 0) {
+        document.getElementById("cv-languages-sec").style.display = "none";
+        return;
+      }
+      
+      document.getElementById("cv-languages-list").innerHTML = data.cv.languages
+        .map((lang) => `
+          <div class="cv-language-item">
+            <span class="cv-language-name">${lang.language}</span>
+            <span class="cv-language-proficiency">${lang.proficiency}</span>
+          </div>
+        `)
+        .join("");
+    }
+
+    // ── Achievements ───────────────────────────────────────
+    function renderAchievements() {
+      if (!data.cv?.achievements || data.cv.achievements.length === 0) {
+        document.getElementById("cv-achievements-sec").style.display = "none";
+        return;
+      }
+      
+      document.getElementById("cv-achievements-list").innerHTML = data.cv.achievements
+        .map((achievement) => `
+          <div class="cv-entry-v2">
+            <div class="cv-entry-v2__date">${achievement.date}</div>
+            <div class="cv-entry-v2__content">
+              <p class="cv-entry-v2__role">${achievement.title}</p>
+              <p class="cv-entry-v2__org">${achievement.issuer}</p>
+              ${achievement.description ? `<p class="cv-entry-v2__summary">${achievement.description}</p>` : ""}
+            </div>
+          </div>
+        `)
+        .join("");
+    }
+
+    // ── Right TOC with scroll spy ──────────────────────────
+    function buildTOC() {
+      const sections = Array.from(document.querySelectorAll(".cv-section[id]"));
+      const tocList = document.getElementById("cv-toc-list");
+
+      tocList.innerHTML = sections
+        .map(
+          (s) => {
+            const label = s.querySelector(".cv-section-title")?.textContent.replace(/&amp;/g, "&") || s.id;
+            return `<li><a href="#${s.id}">${label}</a></li>`;
+          }
+        )
+        .join("");
+
+      // Highlight active link on scroll
+      const links = Array.from(tocList.querySelectorAll("a"));
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            const link = tocList.querySelector(`a[href="#${e.target.id}"]`);
+            if (link) link.classList.toggle("is-active", e.isIntersecting);
+          });
+        },
+        { rootMargin: "-15% 0px -65% 0px", threshold: 0 }
+      );
+      sections.forEach((s) => obs.observe(s));
+    }
+
+    // ── Initialise ─────────────────────────────────────────
+    const p = data.profile;
+    document.getElementById("cv-page-desc").textContent =
+      [p.role, p.affiliation].filter(Boolean).join(" · ");
+
+    // Set professional summary
+    document.getElementById("cv-summary-text").textContent = data.cv?.summary || "";
+
+    const dlBtn = document.getElementById("cv-download");
+    if (dlBtn && data.contact?.resumeUrl) dlBtn.href = data.contact.resumeUrl;
+
+    initPage("CV");
+    renderCVContact();
+    renderCVSections();
+    renderSkills();
+    renderLanguages();
+    renderAchievements();
+    buildTOC();
+    setupReveal();
+  </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A step-by-step guide to creating a Git repository, connecting it to a remote and using the everyday Git commands.">
+  <title>Lakhan Adewar | Creating and Connecting a Git Repository</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@400;500;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    .post { max-width: 760px; margin: 0 auto; line-height: 1.75; }
+    .post__meta { color: var(--text-muted); font-size: .9rem; margin-bottom: 1.5rem; }
+    .post__hero { width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--border); margin: 0 0 2rem; }
+    .post h2 { font-family: var(--font-serif); font-size: 1.35rem; margin: 2.25rem 0 .75rem; }
+    .post ol, .post ul { padding-left: 1.4rem; }
+    .post li { margin: .35rem 0; }
+    .post pre { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: .8rem 1rem; overflow-x: auto; font-family: var(--font-mono); font-size: .9rem; }
+    .post code { font-family: var(--font-mono); font-size: .92em; }
+    .post__back { display: inline-block; margin-top: 2.5rem; }
+  </style>
+</head>
+<body>
+
+  <header class="navbar" role="banner">
+    <div class="navbar__inner">
+      <a class="navbar__brand" id="brand-name" href="../index.html">Lakhan Adewar</a>
+      <nav aria-label="Primary navigation">
+        <ul id="nav-links" class="navbar__links" role="list"></ul>
+      </nav>
+      <div class="navbar__controls">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" type="button">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+        <button class="navbar__hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" type="button">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <article class="post">
+      <div class="page-hero">
+        <h1 class="page-title">Creating and Connecting a Git Repository</h1>
+      </div>
+      <p class="post__meta">Lakhan Adewar · September 2023</p>
+      <img class="post__hero" src="../images/blog-git-repository.jpg" alt="Git repository setup">
+
+      <p>Git is a widely used version control system that lets developers track changes in their code, work together and manage projects efficiently. GitLab is a web-based DevOps platform that builds on Git, adding project planning, source code management, CI/CD and monitoring. Together, Git and platforms like GitHub and GitLab give you a solid setup for coding, testing and deploying software.</p>
+      <p>Here's how to create a repository, connect it to a remote and handle the basic day-to-day operations. It assumes you already have Git installed.</p>
+
+      <h2>Step 1: Create a local Git repository</h2>
+      <ol>
+        <li>Open your terminal or command prompt.</li>
+        <li>Go to the folder where you want the repository:
+          <pre><code>cd /path/to/your/directory</code></pre></li>
+        <li>Initialise a new repository there:
+          <pre><code>git init</code></pre></li>
+      </ol>
+
+      <h2>Step 2: Create a remote repository</h2>
+      <ol>
+        <li>Go to your chosen platform, such as GitHub, GitLab or Bitbucket.</li>
+        <li>Sign in, or create an account if you need one.</li>
+        <li>Create a new repository through the platform's interface and give it a name.</li>
+      </ol>
+
+      <h2>Step 3: Connect the local and remote repositories</h2>
+      <ol>
+        <li>Link your local repository to the remote one:
+          <pre><code>git remote add origin &lt;remote_repository_url&gt;</code></pre>
+          Replace <code>&lt;remote_repository_url&gt;</code> with your remote's URL, for example <code>https://github.com/username/repo.git</code>.</li>
+        <li>Check the remote is set correctly:
+          <pre><code>git remote -v</code></pre>
+          You should see <code>origin</code> listed with both fetch and push URLs.</li>
+      </ol>
+
+      <h2>Step 4: Add and commit files</h2>
+      <ol>
+        <li>Create or copy files into your local repository folder.</li>
+        <li>Stage them:
+          <pre><code>git add .</code></pre>
+          This stages everything in the current folder. You can also name individual files.</li>
+        <li>Commit with a clear message:
+          <pre><code>git commit -m "Initial commit"</code></pre></li>
+      </ol>
+
+      <h2>Step 5: Push to the remote repository</h2>
+      <pre><code>git push -u origin master</code></pre>
+      <p>This pushes your local <code>master</code> branch to the remote. The <code>-u</code> flag sets up tracking, so next time a plain <code>git push</code> is enough. Newer repositories often use <code>main</code> instead of <code>master</code>.</p>
+
+      <h2>Step 6: Pull changes from the remote (optional)</h2>
+      <p>If you work with others, or change things on the remote directly, bring those changes down with:</p>
+      <pre><code>git pull origin master</code></pre>
+
+      <h2>Step 7: Branching (optional)</h2>
+      <p>Create a branch and switch to it when you want to work on a feature or fix in isolation:</p>
+      <pre><code>git branch feature-branch
+git checkout feature-branch</code></pre>
+
+      <h2>Step 8: Keep developing and collaborating</h2>
+      <p>With the two repositories connected, you can carry on building your project and working with others, using Git to manage every version. Commit and push regularly so the local and remote copies stay in sync.</p>
+
+      <a class="text-link post__back" href="../blog.html"><i class="fa-solid fa-arrow-left fa-xs" aria-hidden="true"></i> Back to all posts</a>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="footer-year"></span> <span id="footer-name"></span>. built using <code><a href="https://github.com/ursmaheshj/mj-folio" target="_blank" rel="noopener noreferrer">mj-folio</a></code>.</p>
+  </footer>
+
+  <script src="../js/content.js"></script>
+  <script>
+    // Nav links in content.js are relative to the site root, so prefix them for this sub-folder
+    window.PORTFOLIO_DATA.navigation = window.PORTFOLIO_DATA.navigation.map((n) => ({ ...n, href: "../" + n.href }));
+  </script>
+  <script src="../js/shared.js"></script>
+  <script>initPage("Creating and Connecting a Git Repository");</script>
+</body>
+</html>
