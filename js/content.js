@@ -314,12 +314,62 @@ window.PORTFOLIO_DATA = {
    * ─────────────────────────────────────────────────────────────────────────
    */
   "blogs": [
+    // Ordered by what QA hiring managers ask for most right now. The home page shows the first six.
+    {
+      "title": "Understanding Playwright Architecture: How It Works Behind the Scenes",
+      "platform": "Medium",
+      "date": "Dec 2025",
+      "excerpt": "What actually happens when you run a Playwright test: the client-server design, the persistent connection to the browser and the architectural choices that make it fast and reliable.",
+      "url": "https://medium.com/@lakhanadewar/understanding-playwright-architecture-how-it-works-behind-the-scenes-0a1ba22fb81d"
+    },
+    {
+      "title": "How to Automate API Testing in Java Using REST Assured",
+      "platform": "Medium",
+      "date": "Apr 2026",
+      "excerpt": "The given-when-then pattern, serialisation, deserialisation and full lifecycle API testing, with hands-on REST Assured examples.",
+      "url": "https://medium.com/@lakhanadewar/how-to-automate-api-testing-in-java-using-rest-assured-ae714e16ca01"
+    },
+    {
+      "title": "Agentic AI: The Next Revolution in Autonomy",
+      "platform": "Medium",
+      "date": "Aug 2025",
+      "excerpt": "What agentic AI is, how goal-driven agents differ from chatbots that simply answer questions, and why it matters for the way we build and test software.",
+      "url": "https://medium.com/@lakhanadewar/agentic-ai-the-next-revolution-in-autonomy-803dcb692aea"
+    },
+    {
+      "title": "Getting Started with Appium: An Introduction to Mobile Automation",
+      "platform": "Medium",
+      "date": "Feb 2023",
+      "excerpt": "A practical introduction to mobile test automation with Appium, from set-up to your first automated test on Android and iOS.",
+      "url": "https://medium.com/@lakhanadewar/getting-started-with-appium-an-introduction-to-mobile-automation-1700371a9357"
+    },
+    {
+      "title": "Appium Mobile Gestures: Overview and Usage Examples",
+      "platform": "Medium",
+      "date": "Feb 2023",
+      "excerpt": "Automating swipe, fling, pinch and other Android gestures with the UiAutomator2 driver, with examples of each.",
+      "url": "https://medium.com/@lakhanadewar/appium-mobile-gestures-overview-and-usage-examples-4f5b277932d2"
+    },
+    {
+      "title": "Why Appium?",
+      "platform": "Medium",
+      "date": "Jan 2023",
+      "excerpt": "Why Appium became the go-to open-source framework for testing native, hybrid and mobile web apps on iOS and Android.",
+      "url": "https://medium.com/@lakhanadewar/why-appium-5c8a234b70f7"
+    },
     {
       "title": "Creating and Connecting a Git Repository",
       "platform": "Personal",
       "date": "Sep 2023",
       "excerpt": "A step-by-step guide to creating a local Git repository, connecting it to GitHub or GitLab, and the everyday commands for committing, pushing, pulling and branching.",
       "url": "posts/git-repository-setup.html"
+    },
+    {
+      "title": "Git 101: Getting Started with Distributed Version Control",
+      "platform": "Medium",
+      "date": "May 2023",
+      "excerpt": "The core Git concepts and commands every tester and developer needs for tracking changes and working on the same code base.",
+      "url": "https://medium.com/@lakhanadewar/it-101-getting-started-with-distributed-version-control-15e6a6ddc1c9"
     }
   ],
 

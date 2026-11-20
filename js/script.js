@@ -46,7 +46,7 @@ function renderLatestPostsPreview() {
   const tbody = document.getElementById("posts-preview-body");
   if (!tbody) return;
 
-  const recent = (data.blogs || []).slice(0, 3);
+  const recent = (data.blogs || []).slice(0, 6);
   if (!recent.length) {
     const block = document.getElementById("posts-preview");
     if (block) block.hidden = true;
@@ -59,7 +59,7 @@ function renderLatestPostsPreview() {
         <tr>
           <td class="news-date">${post.date}</td>
           <td class="news-item">
-            <a href="blog.html">${post.title}</a><span class="post-platform"> · ${post.platform}</span>
+            <a href="${post.url || "blog.html"}"${/^https?:/.test(post.url || "") ? ' target="_blank" rel="noopener noreferrer"' : ""}>${post.title}</a><span class="post-platform"> · ${post.platform}</span>
           </td>
         </tr>`
     )
